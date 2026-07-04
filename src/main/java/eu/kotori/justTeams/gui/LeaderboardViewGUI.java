@@ -101,7 +101,7 @@ public class LeaderboardViewGUI implements InventoryHolder {
       BALANCE,
       MEMBERS;
 
-      // $FF: synthetic method
+      
       private static LeaderboardType[] $values() {
          return new LeaderboardType[]{KILLS, BALANCE, MEMBERS};
       }

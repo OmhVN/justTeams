@@ -580,7 +580,7 @@ public class Team implements InventoryHolder {
          return this.comparator;
       }
 
-      // $FF: synthetic method
+      
       private static SortType[] $values() {
          return new SortType[]{JOIN_DATE, ALPHABETICAL, ONLINE_STATUS};
       }

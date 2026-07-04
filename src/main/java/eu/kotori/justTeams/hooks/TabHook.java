@@ -36,7 +36,7 @@ public class TabHook {
             this.enabled = true;
             this.plugin.getLogger().info("TAB integration enabled.");
          } catch (NoSuchMethodException e) {
-            // Normal on TAB v4
+            
          } catch (ClassNotFoundException e) {
             this.plugin.getLogger().warning("TAB API classes not found: " + e.getMessage());
          } catch (LinkageError e) {

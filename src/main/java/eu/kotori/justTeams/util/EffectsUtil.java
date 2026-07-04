@@ -43,7 +43,7 @@ public class EffectsUtil {
       ERROR,
       TELEPORT;
 
-      // $FF: synthetic method
+      
       private static SoundType[] $values() {
          return new SoundType[]{SUCCESS, ERROR, TELEPORT};
       }

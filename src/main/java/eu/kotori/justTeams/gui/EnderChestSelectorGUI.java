@@ -40,7 +40,7 @@ public class EnderChestSelectorGUI implements InventoryHolder {
         int unlockedCount = this.plugin.getTeamManager().getUnlockedEnderChestPages(team);
         List<EnderChestPageMetadata> pagesMetadata = this.plugin.getTeamManager().loadEnderChestPages(team);
         
-        // Rows 1-5 (slots 0-44) represent chest pages
+        
         int startIndex = (selectorPage - 1) * 45;
         for (int slot = 0; slot < 45; slot++) {
             int chestPage = startIndex + slot + 1;
@@ -69,7 +69,7 @@ public class EnderChestSelectorGUI implements InventoryHolder {
             }
         }
         
-        // Row 6 (slots 45-53) navigation
+        
         if (selectorPage > 1) {
             ItemStack prevButton = new ItemBuilder(Material.ARROW)
                 .withName("<yellow>ᴘʀᴇᴠɪᴏᴜs ᴘᴀɢᴇ</yellow>")

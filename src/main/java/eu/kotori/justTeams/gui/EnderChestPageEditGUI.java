@@ -36,7 +36,7 @@ public class EnderChestPageEditGUI implements InventoryHolder {
         List<EnderChestPageMetadata> pages = this.plugin.getTeamManager().loadEnderChestPages(team);
         EnderChestPageMetadata meta = (page - 1 < pages.size()) ? pages.get(page - 1) : new EnderChestPageMetadata();
         
-        // 1. Change Name Tag
+        
         List<String> nameLore = new ArrayList<>();
         nameLore.add("<gray>Tên hiện tại: <white>" + meta.name + "</white></gray>");
         nameLore.add("");
@@ -48,7 +48,7 @@ public class EnderChestPageEditGUI implements InventoryHolder {
             .build();
         this.inventory.setItem(10, nameItem);
         
-        // 2. Minimum Role Access
+        
         List<String> roleLore = new ArrayList<>();
         roleLore.add("<gray>Quyền tối thiểu: <yellow>" + meta.minRole + "</yellow></gray>");
         roleLore.add("");
@@ -60,7 +60,7 @@ public class EnderChestPageEditGUI implements InventoryHolder {
             .build();
         this.inventory.setItem(12, roleItem);
         
-        // 3. Lock Status
+        
         List<String> lockLore = new ArrayList<>();
         lockLore.add("<gray>Trạng thái khóa: <yellow>" + (meta.locked ? "Đang khóa" : "Mở khóa") + "</yellow></gray>");
         lockLore.add("");
@@ -72,7 +72,7 @@ public class EnderChestPageEditGUI implements InventoryHolder {
             .build();
         this.inventory.setItem(14, lockItem);
         
-        // 4. Back button
+        
         ItemStack backButton = new ItemBuilder(Material.ARROW)
             .withName("<red>ʙᴀᴄᴋ</red>")
             .withAction("back-to-selector")
