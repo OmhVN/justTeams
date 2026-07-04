@@ -1,3 +1,3 @@
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
+    compileOnly("dev.folia:folia-api:26.1.2.build.8-stable")
 }

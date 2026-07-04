@@ -186,10 +186,12 @@ public class PAPIExpansion extends PlaceholderExpansion {
       return true;
    }
 
+   @Override
    public String onPlaceholderRequest(Player player, @NotNull String params) {
       return this.onRequest(player, params);
    }
 
+   @Override
    public String onRequest(OfflinePlayer player, @NotNull String params) {
       if (player == null) {
          return "";
