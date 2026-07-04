@@ -1,0 +1,18 @@
+﻿#────────────────────────── leaderboard-view-gui.yml ───────────────────────────
+# GUI for viewing a specific leaderboard
+#───────────────────────────────────────────────────────────────────────────────
+
+leaderboard-view-gui:
+  size: 54
+  items:
+    team-head:
+      name: "<gradient:#4C9DDE:#4C96D2>#<rank> <team_name></gradient>"
+      lore:
+      - "<gray>Thẻ: <white><team_tag>"
+      - "<gray><statistic_name>: <white><statistic_value>"
+    back-button:
+      slot: 49
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại lựa chọn danh mục.</yellow>"

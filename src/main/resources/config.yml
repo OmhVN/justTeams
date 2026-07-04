@@ -1,28 +1,16 @@
-# ===================================================================
-#                        JustTeams Configuration
-#                    Team Management Plugin Settings
-# ===================================================================
-#
-# This file contains all configuration options for the JustTeams plugin.
-# Each setting controls different aspects of team functionality.
-#
-# Configuration Guidelines:
-#   - Boolean values: true/false (lowercase)
-#   - Strings: Use quotes "like this" for text values
-#   - Numbers: No quotes needed for integers
-#   - Colors: Use hex format #RRGGBB
-#
-# For support and documentation, please visit our wiki.
-# Always backup this file before making changes.
-#
-# ===================================================================
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║  justTeams · config.yml                                                  ║
+# ║                                                                          ║
+# ║  Main plugin settings: teams, creation, bank, homes, warps, cross-server ║
+# ║  sync and performance. Every option is documented below.                 ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
 
 # Configuration version - DO NOT MODIFY
-config-version: 24
+config-version: 31
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                         Proxy Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure cross-server functionality for network setups.
 # Supports BungeeCord, Velocity, and Waterfall proxies.
@@ -32,9 +20,9 @@ proxy_settings:
   # Options: "NONE", "BUNGEE", "VELOCITY"
   type: "NONE"
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                        Database Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Choose your preferred storage method for team data.
 # H2 is recommended for single servers, MySQL for networks.
@@ -84,9 +72,9 @@ storage:
     # Leak detection (0 = disabled, >0 = milliseconds before leak warning)
     leak_detection_threshold: 0
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                         Redis Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Redis provides instant cross-server messaging (< 100ms latency).
 # When enabled, Redis handles real-time updates while MySQL stores data.
@@ -122,9 +110,9 @@ redis:
     # Minimum idle connections to maintain
     min_idle: 2
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                        Feature Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Enable or disable specific features to customize functionality.
 # Each feature can be toggled independently.
@@ -158,19 +146,19 @@ features:
   team_home_teleport: true
   
   # Warp System
-  team_warps: false
-  team_warp_set: false
-  team_warp_delete: false
-  team_warp_teleport: false
+  team_warps: true
+  team_warp_set: true
+  team_warp_delete: true
+  team_warp_teleport: true
   
   # PvP Features
-  team_pvp: false
-  team_pvp_toggle: false
+  team_pvp: true
+  team_pvp_toggle: true
   
   # Economy Features (Requires Vault)
-  team_bank: false
-  team_bank_deposit: false
-  team_bank_withdraw: false
+  team_bank: true
+  team_bank_deposit: true
+  team_bank_withdraw: true
   
   # Storage Features
   team_enderchest: true
@@ -185,9 +173,9 @@ features:
   # Cross-Server Display
   show_cross_server_status: true
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                          General Settings
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Core plugin settings affecting overall behavior.
 #
@@ -233,20 +221,38 @@ settings:
     # Interval (in ticks) to check for glow updates. Default: 20 (1 second)
     check_interval: 20
 
+  # Show in-game notification to admins when PacketEvents is missing
+  # Set to false to disable the in-game reminder
+  notify-missing-packetevents: true
+
   # --- bStats Metrics ---
   # bStats collects some anonymous data for plugin authors like server version, number of players, etc.
   # To see what data is collected, go to https://bstats.org/what-is-collected/
   # You can disable this here if you wish.
   bstats:
     enabled: true
-  
+
+  # --- FastStats Metrics ---
+  # FastStats provides detailed plugin analytics and error tracking.
+  # See https://faststats.dev/ for more information.
+  # You can disable this here if you wish.
+  faststats:
+    enabled: true
+
   # Team Limits
   max_team_size: 10
+
+  # Permission-based team sizes
+  # Permission format: justteams.team.size.<number>
+  # The highest permission value will be used
+  # If disabled or no permission found, uses max_team_size above
+  permission_based_team_size: true
+
   min_name_length: 3
   max_name_length: 16
   max_tag_length: 6
   max_description_length: 64
-  
+
   allow_formatting_codes: true
   blocked_formatting_codes:
     - "&k"
@@ -254,42 +260,36 @@ settings:
     - "&m"
     - "&n"
     - "&o"
-  
+
   rename_cooldown: 604800
-  
-  # Default Settings
+
   default_pvp_status: true
   default_public_status: false
-  
-  # Cross-Server Synchronization
-  # IMPORTANT: Enable this for multi-server networks!
-  # Requirements:
-  #   1. Set single_server_mode to false
-  #   2. Use MySQL database (storage.type: "mysql")
-  #   3. Configure proxy_settings.type (BUNGEE or VELOCITY)
-  #   4. Set unique server-identifier on each server
-  #   5. All servers must connect to the SAME MySQL database
-  # When enabled:
-  #   - Teams are synchronized across all servers
-  #   - Players can switch servers and stay in their team
-  #   - Team data updates in real-time across the network
+
+  # Team Creation Settings
+  creation:
+    require_color: false
+    default_color: "<white>"
+    use_gui_color_selection: false
+    tag_optional: false
+    # Allow spaces in team names. When true, /team create <tag> <name> lets the name contain spaces
+    # (e.g. "The Salty Crew"). When false, names must be a single word (letters, digits, underscore).
+    # The tag always comes first either way, and teams can be referenced by their tag.
+    allow_spaces_in_name: true
+
+  # Cross-Server Synchronization (requires single_server_mode: false and MySQL)
   enable_cross_server_sync: false
-  
-  # Performance Optimization
-  # Sync intervals control how often cross-server data is synchronized
-  # ULTRA-FAST MODE: critical_sync_interval set to 1 second for near-instant delivery
-  # For high-traffic servers (100+ players): increase to 2-3 seconds
-  # For normal servers: 1 second provides the best real-time experience
+
   sync_optimization:
-    heartbeat_interval: 600            # Server heartbeat: 10 minutes (600 seconds)
-    cross_server_sync_interval: 3    
-    critical_sync_interval: 1          # Messages & critical updates: 1 SECOND (ULTRA-FAST)
+    heartbeat_interval: 600
+    cross_server_sync_interval: 3
+    critical_sync_interval: 1
     max_teams_per_batch: 100
     enable_lazy_loading: true
     team_cache_ttl: 1200
     enable_optimistic_locking: true
     max_sync_retries: 2
-    sync_retry_delay: 1000             # Reduced retry delay to 1 second
+    sync_retry_delay: 1000
     max_batch_size: 500
     cache_cleanup_interval: 900
     async_database_operations: true
@@ -298,7 +298,6 @@ settings:
     heartbeat_batch_size: 1
     enable_connection_pooling: true
 
-  # Performance Monitoring
   performance:
     enable_metrics: false
     log_slow_queries: true
@@ -310,9 +309,82 @@ settings:
     gui_update_throttle_ms: 100
     max_concurrent_db_operations: 5
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
+#                        Team Tier Upgrade System
+# ────────────────────────────────────────────────────────────────────────────
+#
+# Teams start at tier 1 and can spend bank money to progress through
+# tiers. Each tier unlocks larger teams, a bigger ender chest, and
+# small combat perks.
+#
+# Security guarantees (enforced in code, NOT just config):
+#   - damage_bonus_percent is hard capped at 15% regardless of config
+#   - max_members hard cap is 100
+#   - enderchest_rows hard cap is 6 (Minecraft limit)
+#   - home_cooldown_reduction_percent hard cap is 75%
+#   - max tier hard cap is 10
+#
+# Only the team OWNER can purchase upgrades. Upgrades deduct from the
+# team bank. Skipping tiers is not allowed - each upgrade steps +1.
+# ────────────────────────────────────────────────────────────────────────────
+team_upgrades:
+  # Set to false to disable tier upgrades entirely. When disabled:
+  #   - All teams stay at tier 1 with base stats
+  #   - The Upgrades button is hidden in the team GUI
+  #   - Ender chest falls back to settings.team_ender_chest.rows
+  #   - Max team size falls back to settings.max_team_size / permissions
+  enabled: true
+
+  tiers:
+    1:
+      # Tier 1 is the starting tier. Cost is ignored (you start here for free).
+      max_members: 10
+      enderchest_rows: 3
+      damage_bonus_percent: 0
+      home_cooldown_reduction_percent: 0
+      cost: 0
+    2:
+      max_members: 12
+      enderchest_rows: 4
+      damage_bonus_percent: 1
+      home_cooldown_reduction_percent: 10
+      cost: 10000
+    3:
+      max_members: 15
+      enderchest_rows: 5
+      damage_bonus_percent: 2
+      home_cooldown_reduction_percent: 20
+      cost: 50000
+    4:
+      max_members: 20
+      enderchest_rows: 6
+      damage_bonus_percent: 3
+      home_cooldown_reduction_percent: 30
+      cost: 150000
+    5:
+      max_members: 25
+      enderchest_rows: 6
+      damage_bonus_percent: 5
+      home_cooldown_reduction_percent: 50
+      cost: 500000
+
+# ────────────────────────────────────────────────────────────────────────────
+#                        Team PvP Settings
+# ────────────────────────────────────────────────────────────────────────────
+team_pvp:
+  # Cooldown in seconds between PvP status toggles (per team)
+  # Set to 0 to disable the cooldown
+  # Bypass with justteams.bypass.pvp.cooldown permission
+  toggle_cooldown: 300
+
+  # Disable flight when a player takes damage from another player
+  # Applies to all players, not just team members
+  # Works with both elytra and creative/gamemode fly
+  disable_fly_on_combat: false
+
+# ────────────────────────────────────────────────────────────────────────────
 #                        Broadcast Settings
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Control server-wide announcements for team events.
 #
@@ -320,9 +392,9 @@ broadcasts:
   team-created: true
   team-disbanded: true
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                        Team Chat Settings
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure the team chat system.
 # When character_enabled is true, players can prefix messages with the character to send team chat
@@ -334,9 +406,9 @@ team_chat:
   character: "#"  # Use # prefix for team chat (e.g., "#hello team")
   require_space: false  # If true, requires space after character (e.g., "# hello team")
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                        Home Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure team home teleportation system.
 #
@@ -344,9 +416,9 @@ team_home:
   warmup_seconds: 5
   cooldown_seconds: 300
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                        Warp Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure the team warp system.
 #
@@ -355,9 +427,9 @@ team_warps:
   warmup_seconds: 5
   cooldown_seconds: 300
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                        Bank Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure the team banking system (requires Vault).
 #
@@ -365,19 +437,32 @@ team_bank:
   enabled: true
   max_balance: 1000000.0
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                     Ender Chest Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure the shared team ender chest.
 #
 team_enderchest:
-  enabled: false
+  enabled: true
   rows: 3
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
+#                      Team Allies Configuration
+# ────────────────────────────────────────────────────────────────────────────
+#
+# Configure the team alliance system.
+# Allows teams to form alliances with other teams.
+#
+team_allies:
+  enabled: true
+  max_allies: 10
+  # Allow teams to toggle accepting join requests
+  allow_request_toggle: true
+
+# ────────────────────────────────────────────────────────────────────────────
 #                    World Restrictions Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure per-world feature restrictions.
 # Features can be disabled in specific worlds to prevent abuse.
@@ -419,9 +504,9 @@ world_restrictions:
     bank:
       - "creative_world"
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                      Feature Costs Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure costs for using team features.
 # Supports both Vault economy and item-based costs.
@@ -434,6 +519,8 @@ feature_costs:
     enabled: true
     
     # Cost for each feature usage
+    team_creation: 0.0
+    team_join: 0.0        # Cost for joining a team (invite accept, public join, join request accept)
     sethome: 100.0
     home: 50.0
     enderchest: 25.0
@@ -443,11 +530,23 @@ feature_costs:
     bank_withdraw: 10.0
     rename: 500.0
   
+  # Permission-based join fees
+  # When enabled, players can have different join fees based on permissions
+  # Permission format: justteams.joinfee.<amount>
+  # Example: justteams.joinfee.500 means player pays $500 to join any team
+  # The highest permission value will be used
+  # If disabled or no permission found, uses team_join cost above
+  permission_based_join_fee:
+    enabled: true
+    max_fee: 10000.0      # Maximum join fee cap (prevents excessive permissions)
+  
   # Item costs
   items:
     enabled: false
     
     # Item costs for each feature (format: "MATERIAL:AMOUNT")
+    team_creation:
+      - "DIAMOND:4"
     sethome:
       - "DIAMOND:2"
       - "EMERALD:1"
@@ -464,9 +563,9 @@ feature_costs:
     # Whether to consume items on use (true) or just require them in inventory (false)
     consume_on_use: true
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                        Effects Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure sound and particle effects.
 #
@@ -495,9 +594,9 @@ effects:
     teleport_warmup: "PORTAL"
     teleport_success: "END_ROD"
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                      Bedrock Edition Support
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Configure cross-platform support for Bedrock Edition players.
 # Requires Floodgate plugin.
@@ -509,3 +608,26 @@ bedrock_support:
   full_feature_support: true
   cross_platform_teams: true
   uuid_mode: "auto"
+
+# ────────────────────────────────────────────────────────────────────────────
+#                    Plugin Integrations
+# ────────────────────────────────────────────────────────────────────────────
+#
+# Configure third-party plugin integrations for enhanced functionality.
+#
+integrations:
+  # EternalCombat Integration
+  # Prevents players from using team commands while in combat
+  # Requires EternalCombat plugin: https://modrinth.com/plugin/eternalcombat
+  eternalcombat:
+    enabled: true
+    # Block these actions while in combat
+    prevent_teleport: true          # Prevent /team home and warp teleports
+    prevent_leave: true              # Prevent leaving team
+    prevent_disband: true            # Prevent disbanding team
+    prevent_invite: true             # Prevent inviting players
+    prevent_kick: true               # Prevent kicking members
+    prevent_transfer: true           # Prevent transferring ownership
+    prevent_bank_withdraw: true      # Prevent withdrawing from bank
+    prevent_enderchest: true         # Prevent opening team enderchest
+    prevent_settings_change: true    # Prevent changing team settings

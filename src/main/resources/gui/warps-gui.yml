@@ -1,0 +1,31 @@
+﻿#─────────────────────────────── warps-gui.yml ─────────────────────────────────
+# GUI for viewing and managing team warps
+#───────────────────────────────────────────────────────────────────────────────
+
+warps-gui:
+  title: "ᴛᴇᴀᴍ ᴡᴀʀᴘs"
+  size: 54
+  items:
+    warp-item:
+      # Slots where team warp items will be placed. See team-gui.player-head.slots for details.
+      # Fallback if removed: slots 9-44 (rows 2-5).
+      slots: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+      name: "<gradient:#4C9D9D:#4C96D2><warp_name></gradient>"
+      lore:
+      - "<gray>Máy chủ: <white><server>"
+      - ""
+      - "<warp_protection_status>"
+    no-warps:
+      slot: 22
+      material: PAPER
+      name: "<gray>ɴᴏ ᴡᴀʀᴘs sᴇᴛ</gray>"
+      lore:
+      - "<gray>Đội của bạn chưa thiết lập điểm dịch chuyển nào.</gray>"
+      - ""
+      - "<dark_gray>Sử dụng <white>/team setwarp <tên></white> để tạo một cái.</dark_gray>"
+    back-button:
+      slot: 49
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại menu chính.</yellow>"

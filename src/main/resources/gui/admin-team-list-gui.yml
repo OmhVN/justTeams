@@ -1,0 +1,26 @@
+﻿#────────────────────────── admin-team-list-gui.yml ────────────────────────────
+# GUI for listing all teams (Admin)
+#───────────────────────────────────────────────────────────────────────────────
+
+admin-team-list-gui:
+  title: "<gradient:#FF6B6B:#4ECDC4><bold>ᴀʟʟ ᴛᴇᴀᴍs</bold></gradient> <dark_gray>- Page <page>"
+  size: 54
+  items:
+    team-head:
+      # Team heads are dynamically generated
+      name-format: '<gold><bold><team></bold></gold>'
+      owner-format: '<gray>Owner: <white><owner>'
+      members-format: '<gray>Members: <white><count>'
+      click-format: '<yellow>Click to manage this team</yellow>'
+    previous-page:
+      material: ARROW
+      name: "<gray>◀ ᴘʀᴇᴠɪᴏᴜs ᴘᴀɢᴇ"
+      slot: 45
+    next-page:
+      material: ARROW
+      name: "<gray>ɴᴇxᴛ ᴘᴀɢᴇ ▶"
+      slot: 53
+    back-button:
+      material: BARRIER
+      name: "<red>ʙᴀᴄᴋ ᴛᴏ ᴀᴅᴍɪɴ ᴍᴇɴᴜ"
+      slot: 49

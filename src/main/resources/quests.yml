@@ -1,0 +1,228 @@
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║  justTeams · quests.yml                                                  ║
+# ║                                                                          ║
+# ║  Team quests: objectives, targets, rewards and rotation.                 ║
+# ║  Add your own quests below; type CUSTOM is driven from other plugins.    ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
+quests-version: 2
+settings:
+  enabled: true
+  auto_assign_count: 3
+quests:
+  daily_zombie_slayer:
+    name: "Zombie Slayer"
+    description:
+      - "Hunt down zombies as a team."
+      - "Every kill counts toward the goal."
+    type: KILL_MOBS
+    target: ZOMBIE
+    required: 100
+    reward_points: 250
+    reward_money: 500.0
+    duration_seconds: 86400
+    icon: ROTTEN_FLESH
+
+  daily_skeleton_slayer:
+    name: "Skeleton Slayer"
+    description:
+      - "Take down skeletons as a team."
+    type: KILL_MOBS
+    target: SKELETON
+    required: 75
+    reward_points: 200
+    reward_money: 400.0
+    duration_seconds: 86400
+    icon: BONE
+
+  arena_warriors:
+    name: "Arena Warriors"
+    description:
+      - "Defeat enemy players in PvP."
+    type: KILL_PLAYERS
+    target: ANY
+    required: 25
+    reward_points: 1000
+    reward_money: 2500.0
+    duration_seconds: 86400
+    icon: DIAMOND_SWORD
+
+  miners_pact:
+    name: "Miners Pact"
+    description:
+      - "Mine stone together."
+    type: BREAK_BLOCKS
+    target: STONE
+    required: 5000
+    reward_points: 300
+    reward_money: 750.0
+    duration_seconds: 86400
+    icon: IRON_PICKAXE
+
+  builders_guild:
+    name: "Builders Guild"
+    description:
+      - "Place blocks toward a shared build."
+    type: PLACE_BLOCKS
+    target: ANY
+    required: 2500
+    reward_points: 200
+    reward_money: 500.0
+    duration_seconds: 86400
+    icon: BRICKS
+
+  long_haul:
+    name: "Long Haul"
+    description:
+      - "Travel across the world together."
+    type: TRAVEL_DISTANCE
+    target: ANY
+    required: 5000
+    reward_points: 150
+    reward_money: 250.0
+    duration_seconds: 86400
+    icon: COMPASS
+
+  monster_hunt:
+    name: "Monster Hunt"
+    description:
+      - "Slay mobs as a team."
+      - "Every mob kill counts."
+    type: KILL_MOBS
+    target: ANY
+    required: 300
+    reward_points: 300
+    reward_money: 600.0
+    duration_seconds: 86400
+    icon: ZOMBIE_HEAD
+
+  creeper_cleanup:
+    name: "Creeper Cleanup"
+    description:
+      - "Blow away the creepers before they blow you up."
+    type: KILL_MOBS
+    target: CREEPER
+    required: 50
+    reward_points: 250
+    reward_money: 500.0
+    duration_seconds: 86400
+    icon: CREEPER_HEAD
+
+  spider_squashers:
+    name: "Spider Squashers"
+    description:
+      - "Clear out the spiders together."
+    type: KILL_MOBS
+    target: SPIDER
+    required: 60
+    reward_points: 200
+    reward_money: 400.0
+    duration_seconds: 86400
+    icon: SPIDER_EYE
+
+  void_walkers:
+    name: "Void Walkers"
+    description:
+      - "Hunt down endermen as a team."
+    type: KILL_MOBS
+    target: ENDERMAN
+    required: 30
+    reward_points: 500
+    reward_money: 1200.0
+    duration_seconds: 86400
+    icon: ENDER_PEARL
+
+  nether_purge:
+    name: "Nether Purge"
+    description:
+      - "Douse the blazes in the Nether."
+    type: KILL_MOBS
+    target: BLAZE
+    required: 40
+    reward_points: 450
+    reward_money: 1000.0
+    duration_seconds: 86400
+    icon: BLAZE_ROD
+
+  wither_hunters:
+    name: "Wither Hunters"
+    description:
+      - "Take down wither skeletons in the fortress."
+    type: KILL_MOBS
+    target: WITHER_SKELETON
+    required: 25
+    reward_points: 600
+    reward_money: 1500.0
+    duration_seconds: 86400
+    icon: WITHER_SKELETON_SKULL
+
+  deep_delvers:
+    name: "Deep Delvers"
+    description:
+      - "Mine deepslate deep underground together."
+    type: BREAK_BLOCKS
+    target: DEEPSLATE
+    required: 4000
+    reward_points: 300
+    reward_money: 700.0
+    duration_seconds: 86400
+    icon: DEEPSLATE
+
+  master_builders:
+    name: "Master Builders"
+    description:
+      - "Place blocks toward a grand build."
+    type: PLACE_BLOCKS
+    target: ANY
+    required: 5000
+    reward_points: 350
+    reward_money: 900.0
+    duration_seconds: 86400
+    icon: BRICKS
+
+  globetrotters:
+    name: "Globetrotters"
+    description:
+      - "Cover a huge distance across the world."
+    type: TRAVEL_DISTANCE
+    target: ANY
+    required: 15000
+    reward_points: 300
+    reward_money: 500.0
+    duration_seconds: 86400
+    icon: MAP
+
+  champions_arena:
+    name: "Champions Arena"
+    description:
+      - "Prove your team in PvP against other players."
+    type: KILL_PLAYERS
+    target: ANY
+    required: 50
+    reward_points: 1500
+    reward_money: 4000.0
+    duration_seconds: 86400
+    icon: NETHERITE_SWORD
+
+  # ---------------------------------------------------------------------------
+  # CUSTOM quest example (disabled — remove the leading '#' to enable).
+  # A CUSTOM quest is driven by another plugin (or your own content) instead of
+  # the built-in listeners. The 'target' below is your own objective key, and you
+  # advance it from code with:
+  #
+  #   JustTeams.getInstance().getQuestManager()
+  #            .addCustomProgress(player, "DUNGEON_CLEAR", 1);
+  #
+  # The key is matched case-insensitively; use ANY to match every key you push.
+  # ---------------------------------------------------------------------------
+  #dungeon_master:
+  #  name: "Dungeon Master"
+  #  description:
+  #    - "Clear dungeons together as a team."
+  #  type: CUSTOM
+  #  target: DUNGEON_CLEAR
+  #  required: 5
+  #  reward_points: 800
+  #  reward_money: 1500.0
+  #  duration_seconds: 604800
+  #  icon: DRAGON_HEAD

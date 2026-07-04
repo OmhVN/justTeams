@@ -1,0 +1,81 @@
+﻿#────────────────────── member-permissions-edit-menu.yml ───────────────────────
+# GUI for editing member permissions
+#───────────────────────────────────────────────────────────────────────────────
+
+member-permissions-edit-menu:
+  title: "ᴘᴇʀᴍs: <target_name>"
+  size: 45
+  items:
+    header:
+      slot: 4
+      material: PLAYER_HEAD
+      name: "<gold><target_name>"
+      lore:
+      - "<gray>Chức vụ: <white><role>"
+      - "<gray>Ngày tham gia: <yellow><joindate>"
+      - ""
+      - "<gray>Nhấp để xem quyền hạn"
+    withdraw-permission:
+      slot: 19
+      visibility-condition: CAN_EDIT
+      material: GOLD_INGOT
+      name: "<gold>ʙᴀɴᴋ ᴡɪᴛʜᴅʀᴀᴡ"
+      lore:
+      - "<gray>Trạng thái hiện tại: <withdraw_status>"
+      - ""
+      - "<toggle_text>"
+      - "<gray>Action: <yellow>withdraw-permission"
+    enderchest-permission:
+      slot: 21
+      visibility-condition: CAN_EDIT
+      material: ENDER_CHEST
+      name: "<gold>ᴇɴᴅᴇʀ ᴄʜᴇsᴛ"
+      lore:
+      - "<gray>Trạng thái hiện tại: <withdraw_status>"
+      - ""
+      - "<toggle_text>"
+      - "<gray>Action: <yellow>enderchest-permission"
+    sethome-permission:
+      slot: 23
+      material: RED_BED
+      name: "<gold>sᴇᴛ ʜᴏᴍᴇ"
+      lore:
+      - "<gray>Trạng thái hiện tại: <withdraw_status>"
+      - ""
+      - "<toggle_text>"
+      - "<gray>Action: <yellow>sethome-permission"
+    usehome-permission:
+      slot: 25
+      material: COMPASS
+      name: "<gold>ᴜsᴇ ʜᴏᴍᴇ"
+      lore:
+      - "<gray>Trạng thái hiện tại: <withdraw_status>"
+      - ""
+      - "<toggle_text>"
+      - "<gray>Action: <yellow>usehome-permission"
+    promote-button:
+      slot: 37
+      material: EMERALD
+      name: "<green>ᴘʀᴏᴍᴏᴛᴇ ᴛᴏ ᴄᴏ-ᴏᴡɴᴇʀ"
+      lore:
+      - "<gray>Nhấp để thăng chức"
+      - "<gray>người chơi lên chức Đồng sở hữu"
+      - ""
+      - "<yellow>Action: promote"
+    demote-button:
+      slot: 37
+      material: REDSTONE
+      name: "<red>ᴅᴇᴍᴏᴛᴇ ᴛᴏ ᴍᴇᴍʙᴇʀ"
+      lore:
+      - "<gray>Nhấp để giáng chức"
+      - "<gray>người chơi xuống chức Thành viên"
+      - ""
+      - "<yellow>Action: demote"
+    back-button:
+      slot: 40
+      material: ARROW
+      name: "<yellow>← ʙᴀᴄᴋ ᴛᴏ ᴛᴇᴀᴍ"
+      lore:
+      - "<gray>Quay lại menu đội"
+      - ""
+      - "<yellow>Action: back"

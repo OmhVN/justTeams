@@ -3,120 +3,81 @@ package eu.kotori.justTeams.hooks;
 import eu.kotori.justTeams.JustTeams;
 import eu.kotori.justTeams.team.Team;
 import eu.kotori.justTeams.team.TeamPlayer;
-import me.ulrich.koth.interfaces.GroupImplement;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import me.ulrich.koth.interfaces.GroupImplement;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
-/**
- * UltimateKoth GroupImplement integration for JustTeams.
- * This class provides team/faction data to UltimateKoth so it can recognize
- * JustTeams teams during KOTH captures and other faction-based mechanics.
- */
 public class JustTeamsGroupImplement implements GroupImplement {
+   private final JustTeams plugin;
 
-    private final JustTeams plugin;
+   public JustTeamsGroupImplement(JustTeams plugin) {
+      this.plugin = plugin;
+   }
 
-    public JustTeamsGroupImplement(JustTeams plugin) {
-        this.plugin = plugin;
-    }
+   public Optional<String> getGroupName(Player player) {
+      return player == null ? Optional.empty() : this.getGroupName(player.getUniqueId());
+   }
 
-    @Override
-    public Optional<String> getGroupName(Player player) {
-        if (player == null)
-            return Optional.empty();
-        return getGroupName(player.getUniqueId());
-    }
+   public Optional<String> getGroupName(UUID playerUuid) {
+      if (playerUuid == null) {
+         return Optional.empty();
+      } else {
+         Team team = this.plugin.getTeamManager().getPlayerTeam(playerUuid);
+         return team != null ? Optional.of(team.getName()) : Optional.empty();
+      }
+   }
 
-    @Override
-    public Optional<String> getGroupName(UUID playerUuid) {
-        if (playerUuid == null)
-            return Optional.empty();
+   public boolean playerHasGroup(Player player) {
+      return player == null ? false : this.playerHasGroup(player.getUniqueId());
+   }
 
-        Team team = plugin.getTeamManager().getPlayerTeam(playerUuid);
-        if (team != null) {
-            return Optional.of(team.getName());
-        }
-        return Optional.empty();
-    }
+   public boolean playerHasGroup(UUID playerUuid) {
+      if (playerUuid == null) {
+         return false;
+      } else {
+         return this.plugin.getTeamManager().getPlayerTeam(playerUuid) != null;
+      }
+   }
 
-    @Override
-    public boolean playerHasGroup(Player player) {
-        if (player == null)
-            return false;
-        return playerHasGroup(player.getUniqueId());
-    }
+   public List<UUID> getGroupOnlineMembers(Player player) {
+      return (List<UUID>)(player == null ? new ArrayList() : this.getGroupOnlineMembers(player.getUniqueId()));
+   }
 
-    @Override
-    public boolean playerHasGroup(UUID playerUuid) {
-        if (playerUuid == null)
-            return false;
-        return plugin.getTeamManager().getPlayerTeam(playerUuid) != null;
-    }
+   public List<UUID> getGroupOnlineMembers(UUID playerUuid) {
+      if (playerUuid == null) {
+         return new ArrayList();
+      } else {
+         Team team = this.plugin.getTeamManager().getPlayerTeam(playerUuid);
+         return (List<UUID>)(team == null ? new ArrayList() : (List)team.getMembers().stream().filter(TeamPlayer::isOnline).map(TeamPlayer::getPlayerUuid).collect(Collectors.toList()));
+      }
+   }
 
-    @Override
-    public List<UUID> getGroupOnlineMembers(Player player) {
-        if (player == null)
-            return new ArrayList<>();
-        return getGroupOnlineMembers(player.getUniqueId());
-    }
+   public List<String> getMembersName(Player player) {
+      return (List<String>)(player == null ? new ArrayList() : this.getMembersName(player.getUniqueId()));
+   }
 
-    @Override
-    public List<UUID> getGroupOnlineMembers(UUID playerUuid) {
-        if (playerUuid == null)
-            return new ArrayList<>();
+   public List<String> getMembersName(UUID playerUuid) {
+      if (playerUuid == null) {
+         return new ArrayList();
+      } else {
+         Team team = this.plugin.getTeamManager().getPlayerTeam(playerUuid);
+         return (List<String>)(team == null ? new ArrayList() : (List)team.getMembers().stream().map((member) -> {
+            Player p = Bukkit.getPlayer(member.getPlayerUuid());
+            return p != null ? p.getName() : Bukkit.getOfflinePlayer(member.getPlayerUuid()).getName();
+         }).filter((name) -> name != null).collect(Collectors.toList()));
+      }
+   }
 
-        Team team = plugin.getTeamManager().getPlayerTeam(playerUuid);
-        if (team == null)
-            return new ArrayList<>();
+   public Optional<String> getPluginVersion() {
+      return Optional.of(this.plugin.getDescription().getVersion());
+   }
 
-        return team.getMembers().stream()
-                .filter(TeamPlayer::isOnline)
-                .map(TeamPlayer::getPlayerUuid)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<String> getMembersName(Player player) {
-        if (player == null)
-            return new ArrayList<>();
-        return getMembersName(player.getUniqueId());
-    }
-
-    @Override
-    public List<String> getMembersName(UUID playerUuid) {
-        if (playerUuid == null)
-            return new ArrayList<>();
-
-        Team team = plugin.getTeamManager().getPlayerTeam(playerUuid);
-        if (team == null)
-            return new ArrayList<>();
-
-        return team.getMembers().stream()
-                .map(member -> {
-                    Player p = Bukkit.getPlayer(member.getPlayerUuid());
-                    if (p != null) {
-                        return p.getName();
-                    }
-
-                    return Bukkit.getOfflinePlayer(member.getPlayerUuid()).getName();
-                })
-                .filter(name -> name != null)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public Optional<String> getPluginVersion() {
-        return Optional.of(plugin.getDescription().getVersion());
-    }
-
-    @Override
-    public Optional<String> getPluginName() {
-        return Optional.of("JustTeams");
-    }
+   public Optional<String> getPluginName() {
+      return Optional.of("JustTeams");
+   }
 }

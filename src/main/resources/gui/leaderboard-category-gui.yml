@@ -1,0 +1,35 @@
+﻿#──────────────────────── leaderboard-category-gui.yml ─────────────────────────
+# GUI for choosing a leaderboard category
+#───────────────────────────────────────────────────────────────────────────────
+
+leaderboard-category-gui:
+  title: "ᴛᴇᴀᴍ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ"
+  size: 27
+  items:
+    top-kills:
+      slot: 11
+      material: NETHERITE_SWORD
+      name: "<gradient:#4C9DDE:#4C96D2>ᴛᴏᴘ ᴋɪʟʟs</gradient>"
+      lore:
+      - "<gray>Hiển thị 10 đội có nhiều mạng giết nhất.</gray>"
+      action: top-kills
+    top-balance:
+      slot: 13
+      material: DIAMOND
+      name: "<gradient:#4C9DDE:#4C96D2>ᴛᴏᴘ ʙᴀʟᴀɴᴄᴇ</gradient>"
+      lore:
+      - "<gray>Hiển thị 10 đội giàu nhất.</gray>"
+      action: top-balance
+    top-members:
+      slot: 15
+      material: PLAYER_HEAD
+      name: "<gradient:#4C9DDE:#4C96D2>ᴛᴏᴘ ᴍᴇᴍʙᴇʀs</gradient>"
+      lore:
+      - "<gray>Hiển thị 10 đội có nhiều thành viên nhất.</gray>"
+      action: top-members
+    back-button:
+      slot: 22
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại đội của bạn.</yellow>"

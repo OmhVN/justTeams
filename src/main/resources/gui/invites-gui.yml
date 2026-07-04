@@ -1,0 +1,40 @@
+﻿#────────────────────────────── invites-gui.yml ────────────────────────────────
+# GUI for viewing pending team invitations
+#───────────────────────────────────────────────────────────────────────────────
+
+invites-gui:
+  title: "ᴘᴇɴᴅɪɴɢ ɪɴᴠɪᴛᴇs"
+  size: 54
+  items:
+    team-icon:
+      # Slots where team invite icons will be placed. See team-gui.player-head.slots for details.
+      # Fallback if removed: slots 9-44 (rows 2-5).
+      slots: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+      material: DIAMOND
+      name: "<gradient:#4C9D9D:#4C96D2><team_name></gradient>"
+      lore:
+      - "<gray>Thẻ: <white><team_tag>"
+      - "<gray>Được mời bởi: <yellow><inviter>"
+      - "<gray>Thành viên: <white><members>/<max_members>"
+      - "<gray>Mô tả: <white><description>"
+    no-invites:
+      slot: 22
+      material: PAPER
+      name: "<gray>ɴᴏ ᴘᴇɴᴅɪɴɢ ɪɴᴠɪᴛᴇs</gray>"
+      lore:
+      - "<gray>Bạn không có lời mời vào đội nào đang chờ.</gray>"
+      - ""
+      - "<dark_gray>Chủ đội có thể mời bạn bằng lệnh</dark_gray>"
+      - "<dark_gray>/team invite <người chơi></dark_gray>"
+    back-button:
+      slot: 49
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại menu chính.</yellow>"
+    close-button:
+      slot: 53
+      material: BARRIER
+      name: "<red>ᴄʟᴏsᴇ</red>"
+      lore:
+      - "<red>Nhấp để đóng menu này.</red>"

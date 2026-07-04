@@ -1,0 +1,151 @@
+﻿#───────────────────────── admin-team-manage-gui.yml ───────────────────────────
+# GUI for managing a specific team (Admin)
+#───────────────────────────────────────────────────────────────────────────────
+
+admin-team-manage-gui:
+  title: "<gold><bold>ᴍᴀɴᴀɢᴇ</bold></gold> <dark_gray>» <white><team>"
+  size: 54
+  items:
+    team-info:
+      slot: 0
+      material: NAME_TAG
+      name: "<yellow>ᴛᴇᴀᴍ ɪɴғᴏ"
+      lore:
+      - "<gray>Tên: <white><player>"
+      - "<gray>Thẻ: <white><team_tag>"
+      - "<gray>Chủ sở hữu: <white><owner>"
+      - "<gray>Thành viên: <white><members>/<max_members>"
+    description:
+      slot: 1
+      material: WRITABLE_BOOK
+      name: "<aqua>ᴅᴇsᴄʀɪᴘᴛɪᴏɴ"
+      lore:
+      - "<gray>Hiện tại: <white><description>"
+      - ""
+      - "<yellow>Nhấp để thay đổi mô tả"
+    rename:
+      slot: 2
+      material: PAPER
+      name: "<gold>ʀᴇɴᴀᴍᴇ ᴛᴇᴀᴍ"
+      lore:
+      - "<gray>Hiện tại: <white><description>"
+      - ""
+      - "<yellow>Nhấp để đổi tên đội"
+      - "<gray>(Không áp dụng hồi chiêu cho admin)"
+    change-tag:
+      slot: 3
+      material: OAK_SIGN
+      name: "<light_purple>ᴄʜᴀɴɢᴇ ᴛᴀɢ"
+      lore:
+      - "<gray>Hiện tại: <white><description>"
+      - ""
+      - "<yellow>Nhấp để thay đổi thẻ"
+    toggle-public:
+      slot: 9
+      material-public: LIME_DYE
+      material-private: GRAY_DYE
+      name-public: '<green><bold>ᴘᴜʙʟɪᴄ</bold> <gray>(Click to make private)'
+      name-private: '<gray><bold>ᴘʀɪᴠᴀᴛᴇ</bold> <gray>(Click to make public)'
+      lore-public:
+      - "<gray>Trạng thái: <green>Công khai"
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+      lore-private:
+      - "<gray>Trạng thái: <red>Riêng tư"
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+    toggle-pvp:
+      slot: 10
+      material-enabled: NETHERITE_SWORD
+      material-disabled: WOODEN_SWORD
+      name-enabled: '<red><bold>ᴘᴠᴘ ᴇɴᴀʙʟᴇᴅ</bold> <gray>(Click to disable)'
+      name-disabled: '<gray><bold>ᴘᴠᴘ ᴅɪsᴀʙʟᴇᴅ</bold> <gray>(Click to enable)'
+      lore-enabled:
+      - "<gray>PvP: <green>Bật"
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+      lore-disabled:
+      - "<gray>PvP: <red>Tắt"
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+    balance:
+      slot: 11
+      material: DIAMOND
+      name: "<yellow>ʙᴀʟᴀɴᴄᴇ"
+      lore:
+      - "<gray>Hiện tại: <white><description>"
+      - ""
+      - "<yellow>Nhấp <gray>để đặt số dư"
+    statistics:
+      slot: 12
+      material: IRON_SWORD
+      name: "<red>sᴛᴀᴛɪsᴛɪᴄs"
+      lore:
+      - "<gray>Số mạng giết: <white><kills>"
+      - "<gray>Số mạng chết: <white><deaths>"
+      - "<gray>K/D: <white><kd>"
+      - ""
+      - "<yellow>Nhấp để chỉnh sửa số liệu thống kê"
+    enderchest:
+      slot: 13
+      material: ENDER_CHEST
+      name: "<dark_purple>ᴇɴᴅᴇʀᴄʜᴇsᴛ"
+      lore:
+      - "<gray>Xem rương Ender của đội"
+      - ""
+      - "<yellow>Nhấp để mở"
+    disband:
+      slot: 14
+      material: TNT
+      name: "<dark_red>ᴅɪsʙᴀɴᴅ ᴛᴇᴀᴍ"
+      lore:
+      - "<gray>Xóa vĩnh viễn đội này"
+      - "<red>⚠ Việc này không thể hoàn tác!"
+      - ""
+      - "<yellow>Nhấp để giải tán"
+    members-divider:
+      slots: [18, 19, 20, 21, 22, 23, 24, 25, 26]
+      material: YELLOW_STAINED_GLASS_PANE
+      name: "<yellow>▬▬▬ ᴍᴇᴍʙᴇʀs ▬▬▬"
+    member-head:
+      # Member heads are dynamically generated (slots 27-47)
+      name-owner: '<gold><bold>★ <player>'
+      name-regular: '<white><player>'
+      lore:
+      - "<gray>Chức vụ: <white><role>"
+      - "<gray>Trực tuyến: <online_status>"
+      - ""
+      - "<gray>Quyền hạn:"
+      - "<gray>- Rút tiền: <withdraw_status>"
+      - "<gray>- Rương Ender: <enderchest_status>"
+      - "<gray>- Đặt nhà: <sethome_status>"
+      - "<gray>- Sử dụng nhà: <usehome_status>"
+      - ""
+      - "<yellow>Nhấp để chỉnh sửa quyền hạn"
+    previous-members:
+      slot: 48
+      material: ARROW
+      name: "<yellow>◀ ᴘʀᴇᴠɪᴏᴜs"
+    members-info:
+      slot: 49
+      material: PLAYER_HEAD
+      name: "<aqua>ᴍᴇᴍʙᴇʀs"
+      lore:
+      - "<gray>Tổng cộng: <white><total>"
+      - "<gray>Trang: <white><page> <gray>trên <white><total_pages>"
+    next-members:
+      slot: 50
+      material: ARROW
+      name: "<yellow>ɴᴇxᴛ ▶"
+    back-button:
+      slot: 45
+      material: ARROW
+      name: "<gray>◀ ʙᴀᴄᴋ"
+      lore:
+      - "<gray>Quay lại danh sách đội"
+    refresh:
+      slot: 53
+      material: LIME_DYE
+      name: "<green>ʀᴇғʀᴇsʜ"
+      lore:
+      - "<gray>Làm mới menu này"

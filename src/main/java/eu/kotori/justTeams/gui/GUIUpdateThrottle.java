@@ -7,58 +7,59 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class GUIUpdateThrottle {
-    private final JustTeams plugin;
-    private final Map<UUID, CancellableTask> pendingUpdates = new ConcurrentHashMap<>();
-    private final long throttleMs;
+   private final JustTeams plugin;
+   private final Map<UUID, CancellableTask> pendingUpdates = new ConcurrentHashMap();
+   private final long throttleMs;
 
-    public GUIUpdateThrottle(JustTeams plugin) {
-        this.plugin = plugin;
-        this.throttleMs = plugin.getConfigManager().getGuiUpdateThrottleMs();
-    }
+   public GUIUpdateThrottle(JustTeams plugin) {
+      this.plugin = plugin;
+      this.throttleMs = plugin.getConfigManager().getGuiUpdateThrottleMs();
+   }
 
-    public void scheduleUpdate(UUID playerUuid, Runnable updateTask) {
-        if (playerUuid == null || updateTask == null) {
-            plugin.getLogger().warning("GUIUpdateThrottle: Cannot schedule update with null parameters");
-            return;
-        }
-
-        CancellableTask existingTask = pendingUpdates.get(playerUuid);
-        if (existingTask != null) {
+   public void scheduleUpdate(UUID playerUuid, Runnable updateTask) {
+      if (playerUuid != null && updateTask != null) {
+         CancellableTask existingTask = (CancellableTask)this.pendingUpdates.get(playerUuid);
+         if (existingTask != null) {
             existingTask.cancel();
-        }
+         }
 
-        CancellableTask newTask = plugin.getTaskRunner().runLater(() -> {
+         CancellableTask newTask = this.plugin.getTaskRunner().runLater(() -> {
             try {
-                updateTask.run();
+               updateTask.run();
             } catch (Exception e) {
-                plugin.getLogger().warning("Error executing GUI update task: " + e.getMessage());
+               this.plugin.getLogger().warning("Error executing GUI update task: " + e.getMessage());
             } finally {
-                pendingUpdates.remove(playerUuid);
+               this.pendingUpdates.remove(playerUuid);
             }
-        }, throttleMs / 50);
 
-        pendingUpdates.put(playerUuid, newTask);
-    }
+         }, this.throttleMs / 50L);
+         this.pendingUpdates.put(playerUuid, newTask);
+      } else {
+         this.plugin.getLogger().warning("GUIUpdateThrottle: Cannot schedule update with null parameters");
+      }
+   }
 
-    public void cancelPendingUpdate(UUID playerUuid) {
-        if (playerUuid == null) return;
-
-        CancellableTask task = pendingUpdates.remove(playerUuid);
-        if (task != null) {
+   public void cancelPendingUpdate(UUID playerUuid) {
+      if (playerUuid != null) {
+         CancellableTask task = (CancellableTask)this.pendingUpdates.remove(playerUuid);
+         if (task != null) {
             task.cancel();
-        }
-    }
+         }
 
-    public void cleanup() {
-        for (CancellableTask task : pendingUpdates.values()) {
-            if (task != null) {
-                task.cancel();
-            }
-        }
-        pendingUpdates.clear();
-    }
+      }
+   }
 
-    public int getPendingUpdateCount() {
-        return pendingUpdates.size();
-    }
+   public void cleanup() {
+      for(CancellableTask task : this.pendingUpdates.values()) {
+         if (task != null) {
+            task.cancel();
+         }
+      }
+
+      this.pendingUpdates.clear();
+   }
+
+   public int getPendingUpdateCount() {
+      return this.pendingUpdates.size();
+   }
 }

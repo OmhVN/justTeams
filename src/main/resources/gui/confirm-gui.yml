@@ -1,0 +1,21 @@
+#────────────────────────────── confirm-gui.yml ────────────────────────────────
+# GUI for confirming a dangerous action
+#───────────────────────────────────────────────────────────────────────────────
+
+confirm-gui:
+  size: 27
+  items:
+    confirm:
+      slot: 11
+      material: LIME_STAINED_GLASS_PANE
+      name: "<green>ᴄᴏɴғɪʀᴍ</green>"
+      lore:
+      - "<gray>Hành động này không thể hoàn tác.</gray>"
+      action: confirm
+    cancel:
+      slot: 15
+      material: RED_STAINED_GLASS_PANE
+      name: "<red>ᴄᴀɴᴄᴇʟ</red>"
+      lore:
+      - "<gray>Quay lại menu trước đó.</gray>"
+      action: cancel

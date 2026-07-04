@@ -1,0 +1,50 @@
+﻿#───────────────────────────── blacklist-gui.yml ───────────────────────────────
+# GUI for viewing and managing team blacklist
+#───────────────────────────────────────────────────────────────────────────────
+
+blacklist-gui:
+  title: "ᴛᴇᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ"
+  size: 54
+  items:
+    blacklist-header:
+      slot: 4
+      material: BARRIER
+      name: "<white>ᴛᴇᴀᴍ ʙʟᴀᴄᴋʟɪsᴛ</white>"
+      lore:
+      - "<gray>Người chơi không thể gia nhập đội này</gray>"
+      - "<gray>Nhấp vào đầu người chơi để loại bỏ họ</gray>"
+    player-head:
+      # Slots where blacklisted player heads will be placed. See team-gui.player-head.slots for details.
+      # Fallback if removed: slots 9-44 (rows 2-5).
+      slots: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+      material: PLAYER_HEAD
+      name: "<red><player_name></red>"
+      lore:
+      - "<gray>Bị cấm bởi: <white><blacklister></white>"
+      - "<gray>Ngày: <white><date></white>"
+      - ""
+      - "<yellow>Nhấp để loại khỏi danh sách đen</yellow>"
+    back-button:
+      slot: 49
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại menu chính.</yellow>"
+      action: back-button
+    no-blacklisted:
+      slot: 22
+      enabled: true
+      material: BOOK
+      name: "<gray>ɴᴏ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴘʟᴀʏᴇʀs</gray>"
+      lore:
+      - "<gray>Không có người chơi nào trong danh sách đen.</gray>"
+      - "<gray>Sử dụng /team blacklist <người chơi> để thêm vào.</gray>"
+      action: no-blacklisted
+    error-loading:
+      slot: 22
+      enabled: true
+      material: BARRIER
+      name: "<red>ᴇʀʀᴏʀ ʟᴏᴀᴅɪɴɢ ʙʟᴀᴄᴋʟɪsᴛ</red>"
+      lore:
+      - "<red>Không thể tải danh sách đen người chơi.</red>"
+      action: error

@@ -1,0 +1,47 @@
+#─────────────────────────── team-settings-gui.yml ─────────────────────────────
+# GUI for team settings (tag, description, public status)
+#───────────────────────────────────────────────────────────────────────────────
+
+team-settings-gui:
+  title: "ᴛᴇᴀᴍ sᴇᴛᴛɪɴɢs"
+  size: 27
+  items:
+    change-tag:
+      slot: 11
+      material: NAME_TAG
+      name: "<gradient:#4C9DDE:#4C96D2>ᴄʜᴀɴɢᴇ ᴛᴇᴀᴍ ᴛᴀɢ</gradient>"
+      lore:
+      - "<gray>Hiện tại: <white><team_tag></white>"
+      - ""
+      - "<yellow>Nhấp để thay đổi thẻ đội.</yellow>"
+      action: change-tag
+    change-description:
+      slot: 13
+      material: OAK_SIGN
+      name: "<gradient:#4C9DDE:#4C96D2>ᴄʜᴀɴɢᴇ ᴛᴇᴀᴍ ᴅᴇsᴄʀɪᴘᴛɪᴏɴ</gradient>"
+      lore:
+      - "<gray>Hiện tại: <white><team_description></white>"
+      - ""
+      - "<yellow>Nhấp để thay đổi mô tả đội.</yellow>"
+      action: change-description
+    toggle-public:
+      slot: 15
+      material: ENDER_EYE
+      name: "<gradient:#4C9DDE:#4C96D2>ᴛᴇᴀᴍ sᴛᴀᴛᴜs</gradient>"
+      lore:
+      - "<gray>Bật/Tắt xem người chơi có thể yêu cầu</gray>"
+      - "<gray>gia nhập đội của bạn hay không.</gray>"
+      - ""
+      - "<gray>Hiện tại: <status>"
+      - ""
+      - "<yellow>Nhấp để thay đổi trạng thái.</yellow>"
+      status-public: "<green>Public</green>"
+      status-private: "<red>Private</red>"
+      action: toggle-public
+    back-button:
+      slot: 22
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại menu chính.</yellow>"
+      action: back-button

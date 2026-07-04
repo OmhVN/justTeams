@@ -1,37 +1,28 @@
-# ===================================================================
-#                        JustTeams Messages
-#                    Message Configuration File
-# ===================================================================
-#
-# This file contains all messages displayed by the plugin.
-# You can customize every message to match your server's style.
-#
-# Formatting Support:
-#   - MiniMessage format for rich text
-#   - Gradients: <gradient:#color1:#color2>text</gradient>
-#   - Colors: <red>, <green>, <blue>, <yellow>, etc.
-#   - Styles: <bold>, <italic>, <underlined>
-#   - Hex colors: <#FF5555> for custom colors
-#   - Placeholders: Dynamic content like <player>, <team_name>
-#
-# Tips:
-#   - Test changes with /team reload
-#   - Keep messages concise and clear
-#   - Maintain consistent color scheme
-#
-# ===================================================================
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║  justTeams · messages.yml                                                ║
+# ║                                                                          ║
+# ║  Every message the plugin sends. MiniMessage formatting (colours,        ║
+# ║  gradients, hex) is supported. Edit any line to match your server.       ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
 
 # Message configuration version - DO NOT MODIFY
-messages-version: 9
+messages-version: 16
 
-# ===================================================================
+# Team tier upgrade messages
+team_upgrades_disabled: "<red>Team tier upgrades are disabled on this server.</red>"
+team_tier_max_reached: "<red>Your team is already at the maximum tier.</red>"
+team_upgrade_insufficient_funds: "<red>Not enough funds in the team bank! Need <yellow><cost></yellow>, have <yellow><balance></yellow>.</red>"
+team_upgrade_failed: "<red>Failed to upgrade tier. Please contact an administrator.</red>"
+team_tier_upgraded: "<green>Your team has been upgraded to tier <yellow><tier></yellow>!</green>"
+
+# ────────────────────────────────────────────────────────────────────────────
 #                         Core Branding
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 
 # Main plugin prefix used in most messages
-prefix: "<#4C9DDE>[ᴛᴇᴀᴍꜱ]</#4C9DDE> "
+prefix: "<gradient:#4C9DDE:#4C96D2>SolarTeam</gradient> <dark_gray>»</dark_gray> <gray>"
 reload: "<green>Plugin configurations have been successfully reloaded.</green>"
-reload_commands_notice: "<yellow>Note: Changes to 'commands.yml' require a full server restart to take effect.</yellow>"
+reload_commands_notice: "<yellow>Note: Command alias changes from 'commands.yml' have been re-applied. If a player still sees an old alias, ask them to rejoin.</yellow>"
 no_permission: "<red>You do not have permission to use this command.</red>"
 player_only: "<red>This command can only be executed by a player.</red>"
 team_not_found: "<red>A team with that name does not exist.</red>"
@@ -58,7 +49,6 @@ admin_disband_confirm: "<yellow>Are you sure you want to disband the team <white
 admin_team_disbanded: "<green>You have disbanded the team <white><team></white>.</green>"
 admin_team_disbanded_broadcast: "<red>Your team has been disbanded by an administrator.</red>"
 admin_enderchest_input_prompt: "<yellow>Please enter the team name or tag in chat to open their enderchest.</yellow>"
-admin_opened_enderchest: "<green>Opened enderchest for team <white><team_name></white>.</green>"
 admin_reload_success: "<green>Plugin configuration reloaded successfully!</green>"
 admin_reload_failed: "<red>Failed to reload plugin configuration. Check console for errors.</red>"
 invalid_input: "<red>Invalid input. Please try again.</red>"
@@ -67,42 +57,66 @@ team_created_broadcast: "<gray>The team <white><team></white> has been created b
 already_in_team: "<red>You are already in a team. Leave your current one first.</red>"
 name_too_short: "<red>The team name must be at least <white><min_length></white> characters long.</red>"
 name_too_long: "<red>The team name cannot be longer than <white><max_length></white> characters.</red>"
-name_invalid: "<red>The team name can only contain letters, numbers, and underscores.</red>"
-name_contains_blocked_codes: "<red>The team name contains blocked formatting codes.</red>"
-tag_too_long: "<red>The team tag cannot be longer than <white><max_length></white> characters.</red>"
-tag_invalid: "<red>The new tag is invalid (too long or contains invalid characters).</red>"
-tag_contains_blocked_codes: "<red>The team tag contains blocked formatting codes.</red>"
-team_name_exists: "<red>A team with the name <white><team></white> already exists.</red>"
-disband_confirm: "<yellow>Are you sure you want to disband your team? This cannot be undone.</yellow>"
-kick_confirm: "<yellow>Are you sure you want to kick <white><target></white>?</yellow>"
-team_disbanded: "<green>You have successfully disbanded your team.</green>"
-team_disbanded_broadcast: "<gray>The team <white><team></white> has been disbanded.</gray>"
-you_left_team: "<green>You have left the team <white><team></white>.</green>"
-player_left_broadcast: "<gray><white><player></white> has left the team.</gray>"
-invite_sent: "<green>You have invited <white><target></white> to your team.</green>"
-invite_received: "You have been invited to join <white><team></white>. <click:run_command:/team accept <team>><hover:show_text:'<green>Click to accept!'><green>[Accept]</hover></click> or <click:run_command:/team deny <team>><hover:show_text:'<red>Click to deny!'><red>[Deny]</hover></click>"
-invite_self: "<red>You cannot invite yourself.</red>"
-invite_spam: "<red>You have already invited this player. Please wait.</red>"
-target_already_in_team: "<red><white><target></white> is already in a team.</red>"
-team_is_full: "<red>This team is full.</red>"
-no_pending_invite: "<red>You do not have a pending invite from this team.</red>"
-invite_accepted: "<green>You have joined the team <white><team></white>.</green>"
-invite_accepted_broadcast: "<gray><white><player></white> has joined the team.</gray>"
-invite_denied: "<red>You have denied the invitation from <white><team></white>.</red>"
-invite_denied_broadcast: "<gray><white><player></white> denied the team invitation.</gray>"
-pending_invites_singular: "<yellow>You have 1 pending team invitation. Use /team invites to view it.</yellow>"
-pending_invites_plural: "<yellow>You have <count> pending team invitations. Use /team invites to view them.</yellow>"
-team_is_private: "<red>This team is private. Your request to join has been sent.</red>"
-join_request_sent: "<green>Your request to join <white><team></white> has been sent.</green>"
-already_requested_to_join: "<red>You have already sent a request to join <white><team></white>.</red>"
-join_request_received: "<gray><white><player></white> wants to join your team. Use <white>/team requests</white> to view.</gray>"
-no_join_requests: "<gray>There are no pending join requests for your team.</gray>"
-player_joined_public_team: "<green>You have joined the public team <white><team></white>.</green>"
-team_join_error: "<red>An error occurred while trying to join the team. Please try again later.</red>"
-team_creation_error: "<red>An error occurred while creating the team. Please try again later.</red>"
-invite_accept_error: "<red>An error occurred while accepting the invite. Please try again later.</red>"
-joined_team: "<green>You have joined the team <white><team></white>.</green>"
-player_joined_team: "<gray><white><player></white> has joined the team.</gray>"
+status_enabled: "<green>ENABLED"
+status_disabled: "<red>DISABLED"
+quests_gui_title: "<dark_gray>Quests of <gold><team>"
+quest_completed: "<gold>Quest complete: <yellow><quest_name><gold>! Open <yellow>/team quests<gold> to claim."
+quest_claimed: "<green>Reward claimed for <yellow><quest_name><green>: <gold>+<points> points<green>."
+quest_not_ready: "<red>This quest is not ready to claim or already claimed."
+points_set: "<green>Points updated for <yellow><team><green>: <gold><points>"
+points_status: "<gold>Team <yellow><team><gold> has <yellow><points><gold> points."
+feature_names:
+  team_creation: "Team Creation"
+  sethome: "Set Home"
+  home: "Home Teleport"
+  setwarp: "Set Warp"
+  warp: "Warp Teleport"
+  rename: "Team Rename"
+  settag: "Tag Change"
+  setdescription: "Description Change"
+  setcolor: "Color Change"
+  invite: "Invite"
+  bank_deposit: "Bank Deposit"
+  bank_withdraw: "Bank Withdraw"
+  enderchest: "Ender Chest"
+  ally: "Ally Request"
+name_invalid: "<red>Tên đội chỉ được chứa chữ cái, chữ số và dấu gạch dưới.</red>"
+name_contains_blocked_codes: "<red>Tên đội chứa các mã màu hoặc định dạng bị chặn.</red>"
+tag_too_long: "<red>Thẻ (tag) đội không được dài quá <white><max_length></white> ký tự.</red>"
+tag_invalid: "<red>Thẻ đội mới không hợp lệ (quá dài hoặc chứa ký tự không hợp lệ).</red>"
+team_tag_taken: "<red>Thẻ đội này đã được sử dụng bởi một đội khác. Thẻ đội phải là duy nhất.</red>"
+tag_contains_blocked_codes: "<red>Thẻ đội chứa các mã màu hoặc định dạng bị chặn.</red>"
+team_name_exists: "<red>Đã tồn tại đội có tên là <white><team></white>.</red>"
+disband_confirm: "<yellow>Bạn có chắc chắn muốn giải tán đội? Thao tác này không thể hoàn tác.</yellow>"
+kick_confirm: "<yellow>Bạn có chắc chắn muốn trục xuất <white><target></white>?</yellow>"
+team_disbanded: "<green>Bạn đã giải tán đội thành công.</green>"
+team_disbanded_broadcast: "<gray>Đội <white><team></white> đã bị giải tán.</gray>"
+you_left_team: "<green>Bạn đã rời khỏi đội <white><team></white>.</green>"
+player_left_broadcast: "<gray><white><player></white> đã rời khỏi đội.</gray>"
+invite_sent: "<green>Bạn đã mời <white><target></white> gia nhập đội.</green>"
+invite_received: "Bạn đã được mời gia nhập đội <white><team></white>. <click:run_command:/team accept <team>><hover:show_text:'<green>Nhấp để đồng ý!'><green>[Đồng ý]</hover></click> hoặc <click:run_command:/team deny <team>><hover:show_text:'<red>Nhấp để từ chối!'><red>[Từ chối]</hover></click>"
+invite_self: "<red>Bạn không thể mời chính mình.</red>"
+invite_spam: "<red>Bạn đã mời người chơi này rồi. Vui lòng chờ đợi.</red>"
+target_already_in_team: "<red><white><target></white> đã có đội rồi.</red>"
+team_is_full: "<red>Đội này đã đầy thành viên.</red>"
+no_pending_invite: "<red>Bạn không có lời mời nào đang chờ từ đội này.</red>"
+invite_accepted: "<green>Bạn đã gia nhập đội <white><team></white>.</green>"
+invite_accepted_broadcast: "<gray><white><player></white> đã gia nhập đội.</gray>"
+invite_denied: "<red>Bạn đã từ chối lời mời từ đội <white><team></white>.</red>"
+invite_denied_broadcast: "<gray><white><player></white> đã từ chối lời mời gia nhập đội.</gray>"
+pending_invites_singular: "<yellow>Bạn có 1 lời mời gia nhập đội đang chờ. Sử dụng /team invites để xem.</yellow>"
+pending_invites_plural: "<yellow>Bạn có <count> lời mời gia nhập đội đang chờ. Sử dụng /team invites để xem.</yellow>"
+team_is_private: "<red>Đội này ở chế độ riêng tư. Yêu cầu gia nhập của bạn đã được gửi đi.</red>"
+join_request_sent: "<green>Yêu cầu gia nhập đội <white><team></white> của bạn đã được gửi.</green>"
+already_requested_to_join: "<red>Bạn đã gửi yêu cầu gia nhập đội <white><team></white> rồi.</red>"
+join_request_received: "<gray><white><player></white> muốn gia nhập đội của bạn. Sử dụng <white>/team requests</white> để xem.</gray>"
+no_join_requests: "<gray>Không có yêu cầu gia nhập nào đang chờ cho đội của bạn.</gray>"
+player_joined_public_team: "<green>Bạn đã gia nhập đội công khai <white><team></white>.</green>"
+team_join_error: "<red>Có lỗi xảy ra khi gia nhập đội. Vui lòng thử lại sau.</red>"
+team_creation_error: "<red>Có lỗi xảy ra khi tạo đội. Vui lòng thử lại sau.</red>"
+invite_accept_error: "<red>Có lỗi xảy ra khi đồng ý lời mời. Vui lòng thử lại sau.</red>"
+joined_team: "<green>Bạn đã gia nhập đội <white><team></white>.</green>"
+player_joined_team: "<gray><white><player></white> đã gia nhập đội.</gray>"
 join_request_withdrawn: "<green>You have withdrawn your request to join <white><team></white>.</green>"
 join_request_not_found: "<red>You have no pending request to join <white><team></white>.</red>"
 request_accepted_player: "<green>Your request to join <white><team></white> has been accepted!</green>"
@@ -165,15 +179,32 @@ bank_invalid_amount: "<red>Invalid amount. Must be between <white>0.01</white> a
 gui_click_spam_protection: "<red>You are clicking too quickly. Please slow down.</red>"
 sort_rate_limited: "<red>Sorting is temporarily rate limited. Please wait a moment.</red>"
 pvp_toggle_rate_limited: "<red>PvP toggle is temporarily rate limited. Please wait a moment.</red>"
+pvp_toggle_cooldown: "<red>You must wait <white><seconds>s</white> before toggling PvP again.</red>"
+pvp_fly_disabled: "<red>Flight disabled due to PvP combat.</red>"
 disband_rate_limited: "<red>Disband action is temporarily rate limited. Please wait a moment.</red>"
 leave_rate_limited: "<red>Leave action is temporarily rate limited. Please wait a moment.</red>"
 cannot_edit_owner: "<red>You cannot edit the owner's permissions.</red>"
 team_chat_enabled: "<green>Team chat enabled. All messages will now be sent to your team.</green>"
 team_chat_disabled: "<red>Team chat disabled. Messages will now be public.</red>"
-# Available placeholders: <player>, <prefix>, <player_prefix>, <suffix>, <player_suffix>, <team_name>, <message>
+# Available placeholders: <player>, <prefix>, <player_prefix>, <suffix>, <player_suffix>, <team_name>, <team_tag>, <team_color>, <message>
 # <prefix> and <player_prefix> show the player's permission group prefix (requires Vault + LuckPerms/PermissionsEx)
-# Example with prefix: "<dark_gray>[<gradient:#4C9DDE:#FFD700><team_name></gradient>]</dark_gray> <prefix><white><player></white>: <message>"
-team_chat_format: "<dark_gray>[<gradient:#4C9DDE:#FFD700><team_name></gradient>]</dark_gray> <white><player></white>: <message>"
+# <team_color> shows the opening gradient/color tag (e.g., "<gradient:#FF0000:#00FF00>" or "<red>")
+# <team_color_close> shows the closing gradient tag (e.g., "</gradient>" or empty for solid colors)
+# <team_tag> shows the team's tag
+# <team_name> shows the team's name
+# PlaceholderAPI placeholders work too:
+#   %justteams_colored_tag% - tag with gradient/color applied automatically
+#   %justteams_display% - full team display with icons and colors
+# 
+# GRADIENT EXAMPLE (works with /team setcolor #hex #hex):
+# team_chat_format: "<gray>[<team_color><team_tag><team_color_close>] <player>: <message>"
+# 
+# PAPI EXAMPLE (auto-colors):
+# team_chat_format: "<gray>[%justteams_colored_tag%] <player>: <message>"
+# 
+# STATIC GRADIENT EXAMPLE:
+# team_chat_format: "<dark_gray>[<gradient:#4C9DDE:#FFD700><team_name></gradient>]</dark_gray> <white><player></white>: <message>"
+team_chat_format: "<gray>[<team_color><team_tag><team_color_close>] <player>: <message>"
 team_chat_password_warning: "<red>Warning: Please do not share passwords in team chat for security reasons.</red>"
 home_not_set: "<red>Your team does not have a home set. An Owner or Co-Owner can set one with /team sethome.</red>"
 home_set: "<green>Team home has been set to your current location.</green>"
@@ -198,6 +229,8 @@ warp_list_footer: "<gray>End of warps list</gray>"
 no_warps_set: "<gray>Your team has no warps set.</gray>"
 team_pvp_enabled: "<green>Team PvP has been enabled.</green>"
 team_pvp_disabled: "<red>Team PvP has been disabled.</red>"
+team_glow_enabled: "<green>Team glow has been enabled.</green>"
+team_glow_disabled: "<red>Team glow has been disabled.</red>"
 economy_not_found: "<red>Economy plugin (Vault) not found. The bank is disabled.</red>"
 economy_error: "<red>An unexpected error occurred with the economy.</red>"
 bank_deposit_success: "<green>You deposited <white><amount></white> into the team bank.</green>"
@@ -216,18 +249,38 @@ team_info_member_list: "<gray>- <white><player></white>"
 team_info_stats: "<gray>Kills: <white><kills></white> | Deaths: <white><deaths></white> | KDR: <white><kdr></white>"
 team_info_bank: "<gray>Bank Balance: <white><balance></white>"
 team_info_footer: "<gray>End of team info</gray>"
-prompt_team_name: "<gray>Please type your desired team name in chat, or type 'cancel' to abort.</gray>"
-prompt_team_tag: "<gray>Please type your desired team tag in chat, or type 'cancel' to abort.</gray>"
-prompt_bank_amount: "<gray>Please type the amount to <action> in chat, or type 'cancel' to abort.</gray>"
-prompt_setting_change: "<gray>Please type the new team <setting> in chat, or type 'cancel' to abort.</gray>"
-prompt_warp_password: "<gray>Please type the password for warp <white><warp></white> in chat, or type 'cancel' to abort.</gray>"
-creation_cancelled: "<red>Team creation cancelled.</red>"
-action_cancelled: "<red>Action cancelled.</red>"
+prompt_team_name: "<gray>Vui lòng nhập tên đội mong muốn của bạn, hoặc nhập 'cancel' để hủy bỏ.</gray>"
+prompt_team_tag: "<gray>Vui lòng nhập thẻ (tag) đội mong muốn của bạn, hoặc nhập 'cancel' để hủy bỏ.</gray>"
+prompt_team_color: "<gray>Vui lòng nhập màu đội mong muốn của bạn, hoặc nhập 'cancel' để hủy bỏ.</gray>"
+prompt_bank_amount: "<gray>Vui lòng nhập số tiền muốn <action> vào chat, hoặc nhập 'cancel' để hủy bỏ.</gray>"
+prompt_setting_change: "<gray>Vui lòng nhập giá trị <setting> mới của đội, hoặc nhập 'cancel' để hủy bỏ.</gray>"
+prompt_warp_password: "<gray>Vui lòng nhập mật khẩu cho điểm dịch chuyển <white><warp></white>, hoặc nhập 'cancel' để hủy bỏ.</gray>"
+creation_cancelled: "<red>Đã hủy tạo đội.</red>"
+action_cancelled: "<red>Đã hủy thao tác.</red>"
+confirm_disband_title: "<red>Disband <team>?</red>"
 help_header: "<gradient:#4C9DDE:#FFD700>JustTeams Commands</gradient>"
 help_format: "<gray>/team <command> <white>- <description>"
+help_menu:
+  - "<gradient:#4C9DDE:#FFD700>JustTeams Commands</gradient>"
+  - "<gray>/team gui <white>- Opens the team GUI."
+  - "<gray>/team create <tag> <name> <white>- Creates a team (name can have spaces)."
+  - "<gray>/team disband <white>- Disbands your team."
+  - "<gray>/team invite <player> <white>- Invites a player."
+  - "<gray>/team join <teamName> <white>- Joins a public team."
+  - "<gray>/team leave <white>- Leaves your current team."
+  - "<gray>/team info [team] <white>- Shows team info."
+  - "<gray>/team sethome <white>- Sets the team home."
+  - "<gray>/team home <white>- Teleports to the team home."
+  - "<gray>/team bank <white>- Manages the team bank."
+  - "<gray>/team enderchest <white>- Opens the team ender chest."
+  - "<gray>/team top <white>- Shows team leaderboards."
+  - "<gray>/team chat <white>- Toggles team chat mode."
+  - "<gray>/team admin home <team> <white>- Admin teleport to home."
+  - "<gray>/team admin enderchest <team> <white>- Admin view ender chest."
+  - "<click:suggest_command:/team help ><hover:show_text:'<gray>Click for more commands!'><yellow>Type /team help for a full list.</yellow></hover></click>"
 help_entries:
   gui: "Opens the team GUI."
-  create: "<name> <tag> - Creates a team."
+  create: "<tag> <name> - Creates a team (name can have spaces)."
   create_no_tag: "<name> - Creates a team."
   disband: "Disbands your team."
   invite: "<player> - Invites a player."
@@ -246,6 +299,7 @@ help_entries:
   pvp: "Toggles team PvP."
   bank: "[deposit|withdraw] [amount] - Manages the team bank."
   enderchest: "Opens the team ender chest."
+  quests: "Opens the team quests menu."
   top: "Shows leaderboards."
   join: "<team> - Joins or requests to join a team."
   unjoin: "<team> - Withdraws a join request."
@@ -257,12 +311,14 @@ help_entries:
   warps: "Lists all team warps."
   blacklist: "<player> [reason] - Blacklists a player from your team."
   unblacklist: "<player> - Unblacklists a player from your team."
+  admin_home: "admin home <teamName> - Teleport to the team home."
+  admin_enderchest: "admin enderchest <teamName> - View the team ender chest."
   admin_disband: "admin disband <teamName> - Admin command to disband a team."
   platform: "Shows your platform information (Java/Bedrock)."
   debug_permissions: "debug-permissions - Debugs the current permissions of your team."
   debug_placeholders: "debug-placeholders - Tests all PlaceholderAPI placeholders for your team."
-usage_create: "<gray>Usage: /team create <name> <tag></gray>"
-usage_create_no_tag: "<gray>Usage: /team create <name></gray>"
+usage_create: "<gray>Usage: /team create <tag> <name> <gray>(the name can contain spaces)</gray></gray>"
+usage_create_no_tag: "<gray>Usage: /team create <name> <gray>(can contain spaces)</gray></gray>"
 usage_invite: "<gray>Usage: /team invite <player></gray>"
 usage_accept: "<gray>Usage: /team accept <teamName></gray>"
 usage_deny: "<gray>Usage: /team deny <teamName></gray>"
@@ -271,6 +327,7 @@ usage_settag: "<gray>Usage: /team settag <newTag></gray>"
 usage_transfer: "<gray>Usage: /team transfer <player></gray>"
 usage_bank: "<gray>Usage: /team bank <deposit|withdraw> <amount></gray>"
 usage_setdescription: "<gray>Usage: /team setdescription <description...></gray>"
+usage_setjoinfee: "<gray>Usage: /team setjoinfee <enable|disable|amount></gray>"
 usage_promote: "<gray>Usage: /team promote <player></gray>"
 usage_demote: "<gray>Usage: /team demote <player></gray>"
 usage_join: "<gray>Usage: /team join <teamName></gray>"
@@ -281,6 +338,7 @@ usage_warp: "<gray>Usage: /team warp <name> [password]</gray>"
 usage_warps: "<gray>Usage: /team warps</gray>"
 usage_admin_disband: "<gray>Usage: /team admin disband <teamName></gray>"
 usage_admin_enderchest: "<gray>Usage: /team admin enderchest <teamName></gray>"
+usage_admin_warps: "<gray>Usage: /team admin warps <teamName></gray>"
 usage_team_pvp: "<gray>You cannot attack team members while team PvP is disabled.</gray>"
 team_not_exists: "<red>A team with that name does not exist.</red>"
 player_not_in_team_placeholder: "<red>You are not in a team.</red>"
@@ -336,9 +394,28 @@ team_chat_toggled_on: "<green>Team chat enabled. All messages will be sent to yo
 team_chat_toggled_off: "<red>Team chat disabled. Messages will be public.</red>"
 enderchest_opened: "<green>Team Ender Chest opened.</green>"
 enderchest_locked: "<red>Team Ender Chest is currently in use by another player.</red>"
+enderchest_title: "<gradient:#4C9DDE:#4C96D2>ᴛᴇᴀᴍ ᴇɴᴅᴇʀ ᴄʜᴇsᴛ</gradient>"
 leaderboard_header: "<white><bold>ᴛᴇᴀᴍ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ</bold></white>"
+leaderboard_title_kills: "ᴛᴏᴘ 10 ᴛᴇᴀᴍs ʙʏ ᴋɪʟʟs"
+leaderboard_title_balance: "ᴛᴏᴘ 10 ᴛᴇᴀᴍs ʙʏ ʙᴀʟᴀɴᴄᴇ"
+leaderboard_title_members: "ᴛᴏᴘ 10 ᴛᴇᴀᴍs ʙʏ ᴍᴇᴍʙᴇʀs"
 leaderboard_entry: "<gray><rank>. <white><team></white> - <score></gray>"
 leaderboard_footer: "<gray>End of leaderboard</gray>"
+
+# Leaderboard Category GUI - Menu titles and item names
+leaderboard_category_title: "ᴛᴇᴀᴍ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ"
+leaderboard_category_kills_name: "<gradient:#4C9DDE:#4C96D2><bold>ᴛᴏᴘ ᴋɪʟʟs</bold></gradient>"
+leaderboard_category_kills_lore:
+  - "<gray>Shows the top 10 teams with the most kills.</gray>"
+leaderboard_category_balance_name: "<gradient:#4C9DDE:#4C96D2><bold>ᴛᴏᴘ ʙᴀʟᴀɴᴄᴇ</bold></gradient>"
+leaderboard_category_balance_lore:
+  - "<gray>Shows the top 10 richest teams.</gray>"
+leaderboard_category_members_name: "<gradient:#4C9DDE:#4C96D2><bold>ᴛᴏᴘ ᴍᴇᴍʙᴇʀs</bold></gradient>"
+leaderboard_category_members_lore:
+  - "<gray>Shows the top 10 teams with the most members.</gray>"
+leaderboard_category_back_name: "<gray><bold>ʙᴀᴄᴋ</bold></gray>"
+leaderboard_category_back_lore:
+  - "<yellow>Click to return to your team.</yellow>"
 error_loading_leaderboard: "<red>Error loading leaderboard. Please try again later.</red>"
 economy_not_available: "<red>Economy system is not available. Please contact an administrator.</red>"
 bank_insufficient_player_funds: "<red>You don't have enough money to deposit that amount.</red>"
@@ -395,17 +472,22 @@ player_unblacklisted: "<green>You have removed <white><target></white> from the 
 unblacklist_failed: "<red>Failed to remove player from blacklist. Please try again.</red>"
 player_not_blacklisted: "<red><white><target></white> is not blacklisted.</red>"
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                    Feature Restrictions & Costs
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 
 # World restriction messages
 feature_disabled_in_world: "<red>The <white><feature></white> feature is disabled in this world (<white><world></white>).</red>"
 
 # Economy cost messages
 insufficient_funds: "<red>You need <white><cost></white> to use this feature but only have <white><balance></white>.</red>"
+insufficient_funds_join: "<red>You need <white><cost></white> to join this team but only have <white><balance></white>.</red>"
+join_fee_paid: "<green>You've been charged <white><cost></white> to join <white><team></white>.</green>"
 economy_charged: "<green>You've been charged <white><cost></white> to use <white><feature></white>.</green>"
+economy_charged_bank: "<green>Your team's bank was charged <white><cost></white> to use <white><feature></white>.</green>"
+economy_charged_split: "<green>Your team's bank was charged <white><bank></white> and your balance was charged <white><player></white> (total <white><cost></white>) to use <white><feature></white>.</green>"
 economy_disabled: "<red>Economy is not available on this server.</red>"
+economy_error: "<red>An error occurred while processing your payment. Please try again.</red>"
 
 # Item cost messages
 insufficient_items: "<red>You need <white><required></white> but only have <white><current></white>.</red>"
@@ -413,7 +495,7 @@ items_taken: "<green>Used <white><items></white> to access <white><feature></whi
 invalid_item_format: "<red>Invalid item configuration for <white><feature></white>.</red>"
 
 # Admin enderchest messages
-admin_enderchest_opened: "<green>Successfully opened enderchest for team <white><team_name></white>.</green>"
+admin_opened_enderchest: "<green>Successfully opened enderchest for team <white><team_name></white>.</green>"
 invalid_color: "<red>Invalid color. Please use a valid color name (e.g., RED, BLUE, GREEN). type 'reset' to reset color.</red>"
 team_color_updated: "<green>Team color has been updated to <white><color></white>.</green>"
 team_color_reset: "<green>Team color has been reset to default.</green>"
@@ -422,3 +504,52 @@ team_color_reset: "<green>Team color has been reset to default.</green>"
 admin_teleported_home: "<green>You have been teleported to the home of team <white><team></white>.</green>"
 usage_admin_home: "<red>Usage: /team admin home <teamName></red>"
 admin_home_not_set: "<red>Team <white><team></white> does not have a home set.</red>"
+
+# Ally System Messages
+ally_request_sent: "<green>Ally request sent to <white><team></white>!</green>"
+ally_request_received: "<yellow>Team <white><team></white> wants to ally with you! <gray>(Sent by <white><player></white>)</gray></yellow>"
+ally_request_accepted: "<green>You accepted the ally request from <white><team></white>!</green>"
+ally_request_denied: "<red>You denied the ally request from <white><team></white>.</red>"
+ally_request_was_denied: "<red>Your ally request to <white><team></white> was denied.</red>"
+ally_formed: "<green>Your team is now allied with <white><team></white>!</green>"
+ally_broken: "<red>Alliance with <white><team></white> has been broken.</red>"
+ally_removed: "<yellow>Removed <white><team></white> as an ally.</yellow>"
+ally_already_allies: "<red>You are already allies with <white><team></white>!</red>"
+ally_request_already_sent: "<red>You already sent an ally request to <white><team></white>!</red>"
+ally_cannot_ally_self: "<red>You cannot ally with your own team!</red>"
+ally_no_request_found: "<red>No ally request found from <white><team></white>.</red>"
+ally_not_allies: "<red>You are not allies with <white><team></white>!</red>"
+accept_requests_enabled: "<green>Your team now accepts join requests!</green>"
+accept_requests_disabled: "<red>Your team no longer accepts join requests!</red>"
+accept_requests_enabled_broadcast: "<yellow>Team join requests have been enabled.</yellow>"
+accept_requests_disabled_broadcast: "<yellow>Team join requests have been disabled.</yellow>"
+
+# Ally Command Usage Messages
+usage_ally: "<red>Usage: /team ally [add|remove|accept|deny|toggle|list] [team]</red>"
+usage_ally_add: "<red>Usage: /team ally add <team></red>"
+usage_ally_remove: "<red>Usage: /team ally remove <team></red>"
+usage_ally_accept: "<red>Usage: /team ally accept <teamId></red>"
+usage_ally_deny: "<red>Usage: /team ally deny <teamId></red>"
+
+# EternalCombat Integration Messages
+combat_tag_blocked: "<red>You cannot do this while in combat! (<time>s remaining)</red>"
+combat_tag_teleport: "<red>You cannot teleport while in combat! (<time>s remaining)</red>"
+combat_tag_leave: "<red>You cannot leave your team while in combat! (<time>s remaining)</red>"
+combat_tag_disband: "<red>You cannot disband your team while in combat! (<time>s remaining)</red>"
+combat_tag_invite: "<red>You cannot invite players while in combat! (<time>s remaining)</red>"
+combat_tag_kick: "<red>You cannot kick members while in combat! (<time>s remaining)</red>"
+combat_tag_transfer: "<red>You cannot transfer ownership while in combat! (<time>s remaining)</red>"
+combat_tag_bank: "<red>You cannot access the bank while in combat! (<time>s remaining)</red>"
+combat_tag_enderchest: "<red>You cannot access the enderchest while in combat! (<time>s remaining)</red>"
+combat_tag_settings: "<red>You cannot change settings while in combat! (<time>s remaining)</red>"
+
+# Join Fee Messages
+join_fee_enabled: "<green>Join fee enabled! Players will now pay <white><amount></white> to join your team.</green>"
+join_fee_disabled: "<yellow>Join fee disabled. Players can join for free.</yellow>"
+join_fee_amount_set: "<green>Join fee set to <white><amount></white>!</green>"
+join_fee_must_be_positive: "<red>Join fee amount must be 0 or greater!</red>"
+join_fee_exceeds_permission: "<red>You can only set join fees up to <white><max></white> based on your permission!</red>"
+only_owner_can_do_this: "<red>Only the team owner can do this!</red>"
+max_allies_reached: "<red>You have reached the maximum number of allies (<white><max></white>).</red>"
+ally_toggle_disabled: "<red>The ally request toggle is disabled on this server.</red>"
+teleport_cancelled_damage: "<red>Teleport cancelled — you took damage!</red>"

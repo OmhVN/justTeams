@@ -1,6 +1,9 @@
-# ===================================================================
-#                    JustTeams Webhook Configuration
-# ===================================================================
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║  justTeams · webhooks.yml                                                ║
+# ║                                                                          ║
+# ║  Discord webhook notifications for team events. Get a webhook URL        ║
+# ║  from Discord: Server Settings, Integrations, Webhooks.                  ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
 #
 # Configure Discord webhooks to receive notifications about team events
 # Get your webhook URL from Discord: Server Settings → Integrations → Webhooks
@@ -12,7 +15,7 @@
 #   Gold: 16766720     Special events (levelup, achievements)
 #   Purple: 10181046   Bank/Economy events
 #
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 
 # Main webhook settings
 webhook:
@@ -48,9 +51,9 @@ webhook:
     # Delay between retries (milliseconds)
     retry_delay_ms: 2000
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                          Event Configuration
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #
 # Enable/disable specific events and customize their appearance
 #
@@ -63,7 +66,7 @@ webhook:
 #
 # Event-specific placeholders are listed in each event section
 #
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 
 events:
   # Team Creation
@@ -415,9 +418,9 @@ events:
     footer: "Request denied on {server}"
     timestamp: true
 
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 #                         Advanced Settings
-# ===================================================================
+# ────────────────────────────────────────────────────────────────────────────
 
 advanced:
   # Include server IP in footer (useful for multi-server networks)

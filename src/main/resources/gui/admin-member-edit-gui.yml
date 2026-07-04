@@ -1,0 +1,120 @@
+﻿#───────────────────────── admin-member-edit-gui.yml ───────────────────────────
+# GUI for editing member permissions (Admin)
+#───────────────────────────────────────────────────────────────────────────────
+
+admin-member-edit-gui:
+  title: "<gold><bold>ᴇᴅɪᴛ ᴍᴇᴍʙᴇʀ</bold></gold> <dark_gray>» <white><player>"
+  size: 54
+  items:
+    member-info:
+      slot: 4
+      material: PLAYER_HEAD
+      name-owner: '<gold><bold>★ <player>'
+      name-regular: '<white><player>'
+      lore:
+      - "<gray>Tên: <white><player>"
+      - "<gray>Chức vụ: <white><role>"
+      - "<gray>Trực tuyến: <online_status>"
+      - ""
+      - "<gray>Đội: <white><team>"
+    toggle-withdraw:
+      slot: 19
+      material-enabled: LIME_DYE
+      material-disabled: GRAY_DYE
+      name-enabled: '<green><bold>ᴡɪᴛʜᴅʀᴀᴡ</bold> <gray>(Enabled)'
+      name-disabled: '<gray><bold>ᴡɪᴛʜᴅʀᴀᴡ</bold> <gray>(Disabled)'
+      lore:
+      - "<gray>Trạng thái: <status>"
+      - ""
+      - "<gray>Cho phép thành viên rút tiền từ ngân hàng"
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+    toggle-enderchest:
+      slot: 20
+      material-enabled: LIME_DYE
+      material-disabled: GRAY_DYE
+      name-enabled: '<dark_purple><bold>ᴇɴᴅᴇʀᴄʜᴇsᴛ</bold> <gray>(Enabled)'
+      name-disabled: '<gray><bold>ᴇɴᴅᴇʀᴄʜᴇsᴛ</bold> <gray>(Disabled)'
+      lore:
+      - "<gray>Trạng thái: <status>"
+      - ""
+      - "<gray>Cho phép thành viên dùng rương Ender của đội"
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+    toggle-sethome:
+      slot: 21
+      material-enabled: LIME_DYE
+      material-disabled: GRAY_DYE
+      name-enabled: '<aqua><bold>sᴇᴛ ʜᴏᴍᴇ</bold> <gray>(Enabled)'
+      name-disabled: '<gray><bold>sᴇᴛ ʜᴏᴍᴇ</bold> <gray>(Disabled)'
+      lore:
+      - "<gray>Trạng thái: <status>"
+      - ""
+      - "<gray>Cho phép thành viên đặt nhà của đội"
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+    toggle-usehome:
+      slot: 22
+      material-enabled: LIME_DYE
+      material-disabled: GRAY_DYE
+      name-enabled: '<light_purple><bold>ᴜsᴇ ʜᴏᴍᴇ</bold> <gray>(Enabled)'
+      name-disabled: '<gray><bold>ᴜsᴇ ʜᴏᴍᴇ</bold> <gray>(Disabled)'
+      lore:
+      - "<gray>Trạng thái: <status>"
+      - ""
+      - "<gray>Cho phép thành viên dịch chuyển về nhà của đội"
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+    # Only the OWNER can grant this. When enabled on a Co-owner, that Co-owner
+    # can promote regular Members to Co-owner. Disabled by default for safety.
+    toggle-promote-co-owner:
+      slot: 23
+      visibility-condition: IS_CO_OWNER
+      material-enabled: LIME_DYE
+      material-disabled: GRAY_DYE
+      name-enabled: '<gold><bold>ᴘʀᴏᴍᴏᴛᴇ ᴛᴏ ᴄᴏ-ᴏᴡɴᴇʀ</bold> <gray>(Enabled)'
+      name-disabled: '<gray><bold>ᴘʀᴏᴍᴏᴛᴇ ᴛᴏ ᴄᴏ-ᴏᴡɴᴇʀ</bold> <gray>(Disabled)'
+      lore:
+      - "<gray>Trạng thái: <status>"
+      - ""
+      - "<gray>Cho phép Đồng sở hữu này thăng chức"
+      - "<gray>thành viên khác lên Đồng sở hữu."
+      - ""
+      - "<red>Chỉ chủ sở hữu. Mặc định: tắt."
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+    promote:
+      slot: 29
+      material: EMERALD
+      name: "<green>ᴘʀᴏᴍᴏᴛᴇ"
+      lore:
+      - "<gray>Chức vụ hiện tại: <white><role>"
+      - ""
+      - "<gray>Thăng chức lên Đồng sở hữu"
+      - ""
+      - "<yellow>Nhấp để thăng chức"
+    demote:
+      slot: 30
+      material: REDSTONE
+      name: "<red>ᴅᴇᴍᴏᴛᴇ"
+      lore:
+      - "<gray>Chức vụ hiện tại: <white><role>"
+      - ""
+      - "<gray>Giáng chức xuống Thành viên"
+      - ""
+      - "<yellow>Nhấp để giáng chức"
+    kick:
+      slot: 33
+      material: TNT
+      name: "<dark_red>ᴋɪᴄᴋ ᴍᴇᴍʙᴇʀ"
+      lore:
+      - "<gray>Xóa <white><player> <gray>khỏi đội"
+      - "<red>⚠ Hành động này không thể hoàn tác!"
+      - ""
+      - "<yellow>Nhấp để trục xuất thành viên"
+    back-button:
+      slot: 45
+      material: ARROW
+      name: "<gray>◀ ʙᴀᴄᴋ"
+      lore:
+      - "<gray>Quay lại quản lý đội"

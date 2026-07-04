@@ -1,0 +1,76 @@
+#────────────────────────────── upgrades-gui.yml ───────────────────────────────
+# ===================================================================
+# GUI for the team tier upgrade system
+# ===================================================================
+# Placeholders available in this GUI (for lore):
+#   <current_tier>         Team's current tier (e.g. 3)
+#   <max_tier>             Highest tier configured in team_upgrades
+#   <next_tier>            Current tier + 1 (or "MAX" at max)
+#   <current_max_members>, <next_max_members>
+#   <current_enderchest_rows>, <next_enderchest_rows>
+#   <current_damage_bonus>, <next_damage_bonus>   (shown as "5%")
+#   <current_home_reduction>, <next_home_reduction>
+#   <upgrade_cost>         Cost for next upgrade, "-" if maxed
+#   <team_balance>         Current team bank balance
+# ===================================================================
+#───────────────────────────────────────────────────────────────────────────────
+
+upgrades-gui:
+  title: "ᴛᴇᴀᴍ ᴜᴘɢʀᴀᴅᴇs - ᴛɪᴇʀ <current_tier>/<max_tier>"
+  size: 45
+  items:
+    current-tier:
+      slot: 11
+      material: EMERALD_BLOCK
+      name: "<gradient:#4C9DDE:#4C96D2>ᴄᴜʀʀᴇɴᴛ ᴛɪᴇʀ: <current_tier></gradient>"
+      lore:
+      - "<gray>Thành viên tối đa: <white><current_max_members></white>"
+      - "<gray>Số hàng rương Ender: <white><current_enderchest_rows></white>"
+      - "<gray>Sát thương cộng thêm: <white><current_damage_bonus></white>"
+      - "<gray>Giảm hồi chiêu dịch chuyển nhà: <white><current_home_reduction></white>"
+    next-tier:
+      slot: 15
+      material: DIAMOND_BLOCK
+      name: "<gradient:#FFD700:#FFA500>ɴᴇxᴛ ᴛɪᴇʀ: <next_tier></gradient>"
+      lore:
+      - "<gray>Thành viên tối đa: <green><next_max_members></green>"
+      - "<gray>Số hàng rương Ender: <green><next_enderchest_rows></green>"
+      - "<gray>Sát thương cộng thêm: <green><next_damage_bonus></green>"
+      - "<gray>Giảm hồi chiêu dịch chuyển nhà: <green><next_home_reduction></green>"
+      - ""
+      - "<gray>Chi phí: <gold><upgrade_cost></gold>"
+      - "<gray>Số dư của đội: <yellow><team_balance></yellow>"
+    max-tier:
+      # Shown instead of next-tier when the team is at max tier
+      slot: 15
+      material: BEACON
+      name: "<gradient:#FFD700:#FFA500>ᴍᴀxɪᴍᴜᴍ ᴛɪᴇʀ</gradient>"
+      lore:
+      - "<gray>Đội của bạn đã đạt</gray>"
+      - "<gray>cấp độ tối đa hiện có.</gray>"
+    upgrade-button:
+      slot: 22
+      material: NETHER_STAR
+      name: "<gradient:#55FF55:#00AA00>ᴘᴜʀᴄʜᴀsᴇ ᴜᴘɢʀᴀᴅᴇ</gradient>"
+      lore:
+      - "<gray>Nâng cấp lên cấp <green><next_tier></green>"
+      - "<gray>Chi phí: <gold><upgrade_cost></gold>"
+      - ""
+      - "<yellow>Nhấp để mua nâng cấp.</yellow>"
+      - "<red>Chỉ có chủ sở hữu đội mới có thể mua.</red>"
+      action: upgrade-purchase
+    upgrade-button-locked:
+      # Shown to non-owners instead of upgrade-button
+      slot: 22
+      material: BARRIER
+      name: "<red>ᴏᴡɴᴇʀ ᴏɴʟʏ</red>"
+      lore:
+      - "<gray>Chỉ có chủ sở hữu đội mới có thể mua nâng cấp.</gray>"
+      action: upgrade-locked
+    back-button:
+      slot: 40
+      material: ARROW
+      name: "<gray>◀ ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại menu đội.</yellow>"
+      action: back-button

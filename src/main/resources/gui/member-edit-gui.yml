@@ -1,0 +1,139 @@
+﻿#──────────────────────────── member-edit-gui.yml ──────────────────────────────
+# GUI for editing a specific member's roles and permissions
+#───────────────────────────────────────────────────────────────────────────────
+
+member-edit-gui:
+  title: "Edit: <player_name>"
+  size: 54
+  items:
+    player-info-head:
+      slot: 4
+      material: PLAYER_HEAD
+      name: "<gold><player_name></gold>"
+      lore:
+      - "<gray>Chức vụ: <white><role>"
+      - "<gray>Đã tham gia: <white><joindate>"
+    promote-button:
+      slot: 19
+      material: LIME_DYE
+      name: "<green>ᴘʀᴏᴍᴏᴛᴇ ᴛᴏ ᴄᴏ-ᴏᴡɴᴇʀ</green>"
+      lore:
+      - "<gray>Cấp thêm quyền hạn cho người chơi này.</gray>"
+      - ""
+      - "<yellow>Nhấp để thăng chức</yellow>"
+      action: promote-button
+    demote-button:
+      slot: 19
+      material: GRAY_DYE
+      name: "<gray>ᴅᴇᴍᴏᴛᴇ ᴛᴏ ᴍᴇᴍʙᴇʀ</gray>"
+      lore:
+      - "<gray>Gỡ bỏ quyền hạn của Đồng sở hữu.</gray>"
+      - ""
+      - "<yellow>Nhấp để giáng chức</yellow>"
+      action: demote-button
+    kick-button:
+      slot: 22
+      material: RED_WOOL
+      name: "<red>ᴋɪᴄᴋ ᴍᴇᴍʙᴇʀ</red>"
+      lore:
+      - "<gray>Trục xuất người chơi này khỏi đội.</gray>"
+      - ""
+      - "<yellow>Nhấp để trục xuất</yellow>"
+      action: kick-button
+    transfer-button:
+      slot: 25
+      material: BEACON
+      name: "<gold>ᴛʀᴀɴsғᴇʀ ᴏᴡɴᴇʀsʜɪᴘ</gold>"
+      lore:
+      - "<gray>Chuyển giao chức chủ sở hữu cho người chơi này.</gray>"
+      - "<dark_red>Bạn sẽ trở thành thành viên thường!</dark_red>"
+      - ""
+      - "<yellow>Nhấp để chuyển giao</yellow>"
+      action: transfer-button
+    # Toggle for granting Co-owners the ability to promote Members to Co-owner.
+    # Owner-only action. Only rendered when the target is a Co-owner.
+    toggle-promote-co-owner:
+      slot: 28
+      material: NETHER_STAR
+      name: "<gold>ᴘʀᴏᴍᴏᴛᴇ ᴛᴏ ᴄᴏ-ᴏᴡɴᴇʀ ᴘᴇʀᴍ</gold>"
+      lore:
+      - "<gray>Cho phép Đồng sở hữu này thăng chức"
+      - "<gray>Thành viên lên Đồng sở hữu."
+      - ""
+      - "<gray>Trạng thái: <status>"
+      - ""
+      - "<red>Chỉ chủ sở hữu. Mặc định là tắt."
+      - ""
+      - "<yellow>Nhấp để thay đổi"
+      action: toggle-promote-co-owner
+    withdraw-permission:
+      slot: 37
+      material: GOLD_INGOT
+      name: "<gradient:#4C9DDE:#4C96D2>ʙᴀɴᴋ ᴡɪᴛʜᴅʀᴀᴡ</gradient>"
+      lore:
+      - "<gray>Cho phép thành viên này rút tiền từ ngân hàng đội.</gray>"
+      - "<gray>Trạng thái: <status>"
+      action: withdraw-permission
+    enderchest-permission:
+      slot: 39
+      enabled: true
+      material: ENDER_CHEST
+      name: "<gradient:#4C9DDE:#4C96D2>ᴜsᴇ ᴇɴᴅᴇʀ ᴄʜᴇsᴛ</gradient>"
+      lore:
+      - "<gray>Cho phép thành viên này sử dụng rương Ender của đội.</gray>"
+      - "<gray>Trạng thái: <status>"
+      action: enderchest-permission
+    sethome-permission:
+      slot: 41
+      material: GRASS_BLOCK
+      name: "<gradient:#4C9DDE:#4C96D2>sᴇᴛ ᴛᴇᴀᴍ ʜᴏᴍᴇ</gradient>"
+      lore:
+      - "<gray>Cho phép thành viên này thiết lập vị trí nhà của đội.</gray>"
+      - "<gray>Trạng thái: <status>"
+      action: sethome-permission
+    usehome-permission:
+      slot: 43
+      material: ENDER_PEARL
+      name: "<gradient:#4C9DDE:#4C96D2>ᴜsᴇ ᴛᴇᴀᴍ ʜᴏᴍᴇ</gradient>"
+      lore:
+      - "<gray>Cho phép thành viên này dịch chuyển về nhà của đội.</gray>"
+      - "<gray>Trạng thái: <status>"
+      action: usehome-permission
+    withdraw-permission-view:
+      slot: 37
+      material: GOLD_INGOT
+      name: "<gray>ʙᴀɴᴋ ᴡɪᴛʜᴅʀᴀᴡ</gray>"
+      lore:
+      - "<gray>Cho phép thành viên này rút tiền từ ngân hàng đội.</gray>"
+      - "<gray>Trạng thái: <status>"
+      - "<yellow>Chỉ xem - không thể chỉnh sửa</yellow>"
+    enderchest-permission-view:
+      slot: 39
+      material: ENDER_CHEST
+      name: "<gray>ᴜsᴇ ᴇɴᴅᴇʀ ᴄʜᴇsᴛ</gray>"
+      lore:
+      - "<gray>Cho phép thành viên này sử dụng rương Ender của đội.</gray>"
+      - "<gray>Trạng thái: <status>"
+      - "<yellow>Chỉ xem - không thể chỉnh sửa</yellow>"
+    sethome-permission-view:
+      slot: 41
+      material: GRASS_BLOCK
+      name: "<gray>sᴇᴛ ᴛᴇᴀᴍ ʜᴏᴍᴇ</gray>"
+      lore:
+      - "<gray>Cho phép thành viên này thiết lập vị trí nhà của đội.</gray>"
+      - "<gray>Trạng thái: <status>"
+      - "<yellow>Chỉ xem - không thể chỉnh sửa</yellow>"
+    usehome-permission-view:
+      slot: 43
+      material: ENDER_PEARL
+      name: "<gray>ᴜsᴇ ᴛᴇᴀᴍ ʜᴏᴍᴇ</gray>"
+      lore:
+      - "<gray>Cho phép thành viên này dịch chuyển về nhà của đội.</gray>"
+      - "<gray>Trạng thái: <status>"
+      - "<yellow>Chỉ xem - không thể chỉnh sửa</yellow>"
+    back-button:
+      slot: 49
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại menu chính.</yellow>"

@@ -1,0 +1,63 @@
+﻿#────────────────────────────── no-team-gui.yml ────────────────────────────────
+# GUI for players who are NOT in a team
+#───────────────────────────────────────────────────────────────────────────────
+
+no-team-gui:
+  title: "ᴛᴇᴀᴍ ᴍᴇɴᴜ"
+  size: 27
+  items:
+    create-team:
+      slot: 12
+      enabled: true
+      material: WRITABLE_BOOK
+      name: "<gradient:#4C9DDE:#4C96D2>ᴄʀᴇᴀᴛᴇ ᴀ ᴛᴇᴀᴍ</gradient>"
+      lore:
+      - "<gray>Tự lập đội của riêng bạn và mời bạn bè!</gray>"
+      - ""
+      - "<yellow>Nhấp để bắt đầu quá trình tạo đội.</yellow>"
+    leaderboards:
+      slot: 14
+      enabled: true
+      material: EMERALD
+      name: "<gradient:#4C9DDE:#4C96D2>ᴠɪᴇᴡ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅs</gradient>"
+      lore:
+      - "<gray>Xem các đội hàng đầu trên máy chủ.</gray>"
+      - ""
+      - "<yellow>Nhấp để xem bảng xếp hạng.</yellow>"
+  # ═══════════════════════════════════════════════════════════════════════════
+  # CUSTOM DUMMY ITEMS - Decorative items with no click functionality
+  # ═══════════════════════════════════════════════════════════════════════════
+  # Place decorative items anywhere in your GUI! These are purely cosmetic.
+  # Perfect for: Borders, separators, decorations, themed items
+  #
+  # Configuration options:
+  #   slot: Single slot number OR list of slots [1, 2, 3]
+  #   material: Any valid Bukkit material name
+  #   name: Display name (supports MiniMessage formatting)
+  #   lore: List of lore lines (supports MiniMessage formatting)
+  #   custom-model-data: (Optional) Custom model data for resource packs
+  #   enchanted: (Optional) true/false - adds enchantment glint effect
+  # ═══════════════════════════════════════════════════════════════════════════
+  dummy-items:
+    # Example: Decorative diamond in the top-left corner
+    #decoration-diamond:
+    #  slot: 0
+    #  material: DIAMOND
+    #  name: <gradient:#00FFFF:#0080FF><bold>✦ PREMIUM SERVER ✦</bold></gradient>
+    #  lore:
+    #    - <gray>Welcome to our awesome server!</gray>
+    #    - <dark_gray>━━━━━━━━━━━━━━━━━━━━</dark_gray>
+    #  enchanted: true
+    #
+    # Example: Multiple skull decorations
+    #corner-skulls:
+    #  slot: [0, 8, 18, 26]  # All four corners
+    #  material: PLAYER_HEAD
+    #  name: <red>☠</red>
+    #
+    # Example: Colored glass separator
+    #separator:
+    #  slot: [9, 17]
+    #  material: CYAN_STAINED_GLASS_PANE
+    #  name: ' '
+

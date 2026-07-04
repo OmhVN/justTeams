@@ -1,0 +1,33 @@
+﻿#─────────────────────────── join-requests-gui.yml ─────────────────────────────
+# GUI for viewing and managing team join requests
+#───────────────────────────────────────────────────────────────────────────────
+
+join-requests-gui:
+  title: "ᴊᴏɪɴ ʀᴇǫᴜᴇsᴛs"
+  size: 54
+  items:
+    player-head:
+      # Slots where requester heads will be placed. See team-gui.player-head.slots for details.
+      # Fallback if removed: slots 9-44 (rows 2-5).
+      slots: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+      name: "<gradient:#4C9D9D:#4C96D2><status_indicator><player_name></gradient>"
+      lore:
+      - "<gray>Người chơi này muốn gia nhập đội của bạn.</gray>"
+      - ""
+      - "<green>Nhấp chuột trái để đồng ý</green>"
+      - "<red>Nhấp chuột phải để từ chối</red>"
+    no-requests:
+      slot: 22
+      material: PAPER
+      name: "<gray>ɴᴏ ᴊᴏɪɴ ʀᴇǫᴜᴇsᴛs</gray>"
+      lore:
+      - "<gray>Hiện tại không có yêu cầu nào đang chờ.</gray>"
+      - ""
+      - "<dark_gray>Người chơi có thể gửi yêu cầu nếu</dark_gray>"
+      - "<dark_gray>đội của bạn được đặt là công khai.</dark_gray>"
+    back-button:
+      slot: 49
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại menu chính.</yellow>"

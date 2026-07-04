@@ -1,45 +1,27 @@
 name: justTeams
-version: 2.4.0
+version: '${version}'
 main: eu.kotori.justTeams.JustTeams
 api-version: '1.21'
 folia-supported: true
 load: POSTWORLD
 authors: [ kotori ]
 description: A powerful teams plugin for multi-server environments with full Folia, Paper, Spigot, and Purpur support.
-softdepend: [ Vault, PlaceholderAPI, PvPManager, packetevents ]
+softdepend: [ Vault, PlaceholderAPI, PvPManager, packetevents, TAB ]
+libraries:
+  - com.zaxxer:HikariCP:5.1.0
+  - com.mysql:mysql-connector-j:8.4.0
+  - com.h2database:h2:2.2.224
+  - redis.clients:jedis:5.1.0
+  - org.slf4j:slf4j-nop:2.0.13
 commands:
   team:
     description: Main command for justTeams.
     usage: /<command> [subcommand]
     aliases: [ t ]
-  guild:
-    description: Alias for the main team command.
-    usage: /<command> [subcommand]
-    aliases: [ g ]
-  clan:
-    description: Alias for the main team command.
-    usage: /<command> [subcommand]
-    aliases: [ c ]
-  party:
-    description: Alias for the main team command.
-    usage: /<command> [subcommand]
-    aliases: [ p ]
   teammsg:
     description: Sends a message to your team.
     usage: /<command> <message>
     aliases: [ tm, tmsg ]
-  guildmsg:
-    description: Sends a message to your team.
-    usage: /<command> <message>
-    aliases: [ gmsg ]
-  clanmsg:
-    description: Sends a message to your team.
-    usage: /<command> <message>
-    aliases: [ cmsg ]
-  partymsg:
-    description: Sends a message to your team.
-    usage: /<command> <message>
-    aliases: [ pmsg ]
 permissions:
   justteams.*:
     description: Grants all permissions for the plugin.
@@ -87,6 +69,7 @@ permissions:
       - justteams.command.delwarp
       - justteams.command.warp
       - justteams.command.warps
+      - justteams.setcolor
   justteams.bypass.bank.withdraw:
     description: Allows bypassing team-specific withdrawal permissions.
     default: op
@@ -194,6 +177,9 @@ permissions:
     default: true
   justteams.command.warps:
     description: Allows listing team warps or opening the GUI.
+    default: true
+  justteams.setcolor:
+    description: Allows changing team color with /team setcolor.
     default: true
   justteams.admin.performance:
     description: Allows access to performance monitoring commands.

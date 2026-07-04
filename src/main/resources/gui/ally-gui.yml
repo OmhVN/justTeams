@@ -1,0 +1,48 @@
+﻿#──────────────────────────────── ally-gui.yml ─────────────────────────────────
+# Ally GUI - Manage team alliances
+#───────────────────────────────────────────────────────────────────────────────
+
+ally-gui:
+  title: "<gradient:#4C9DDE:#4C96D2><bold>ᴛᴇᴀᴍ ᴀʟʟɪᴇs</bold></gradient>"
+  size: 54
+  items:
+    back-button:
+      enabled: true
+      slot: 49
+      material: ARROW
+      name: "<gray>◀ ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<gray>Quay lại menu đội"
+      action: back-button
+    no-allies:
+      enabled: true
+      slot: 22
+      material: BARRIER
+      name: "<gray>ɴᴏ ᴀʟʟɪᴇs</gray>"
+      lore:
+      - "<gray>Đội của bạn chưa có liên minh nào.</gray>"
+      - ""
+      - "<yellow>Hãy kết đồng minh với các đội khác!</yellow>"
+    ally-team:
+      # Slots for ally icons AND incoming ally requests (shared pool - allies fill first,
+      # then requests continue in the remaining slots). See team-gui.player-head.slots for details.
+      # Fallback if removed: slots 9-44 (rows 2-5).
+      slots: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+      enabled: true
+      material: PLAYER_HEAD
+      name: "<gradient:#4C9DDE:#4C96D2><team></gradient>"
+      lore:
+      - "<gray>Thẻ: <white><team_tag>"
+      - "<gray>Thành viên: <white><members>"
+      - ""
+      - "<red>Nhấp để hủy kết đồng minh!</red>"
+    ally-request:
+      enabled: true
+      material: PAPER
+      name: "<yellow>ʀᴇǫᴜᴇsᴛ ғʀᴏᴍ <team></yellow>"
+      lore:
+      - "<gray>Thẻ: <white><team_tag>"
+      - "<gray>Thành viên: <white><members>"
+      - ""
+      - "<green>Nhấp để đồng ý/từ chối!</green>"
+

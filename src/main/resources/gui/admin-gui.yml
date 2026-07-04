@@ -1,0 +1,40 @@
+﻿#─────────────────────────────── admin-gui.yml ─────────────────────────────────
+# GUI for the main admin panel
+#───────────────────────────────────────────────────────────────────────────────
+
+admin-gui:
+  title: "<gradient:#FF6B6B:#4ECDC4><bold>ᴛᴇᴀᴍ ᴀᴅᴍɪɴ ᴘᴀɴᴇʟ</bold></gradient>"
+  size: 27
+  items:
+    manage-teams:
+      slot: 9
+      material: COMPASS
+      name: "<gradient:#4C9DDE:#4C96D2>ᴍᴀɴᴀɢᴇ ᴛᴇᴀᴍs</gradient>"
+      lore:
+      - "<gray>Xem và quản lý tất cả các đội"
+      - "<gray>Nhấp để mở danh sách đội"
+      action: 'manage-teams'
+    view-enderchest:
+      slot: 12
+      material: ENDER_CHEST
+      name: "<gradient:#9B59B6:#E74C3C>ᴠɪᴇᴡ ᴇɴᴅᴇʀᴄʜᴇsᴛ</gradient>"
+      lore:
+      - "<gray>Truy cập rương Ender của bất kỳ đội nào"
+      - "<gray>Nhấp và nhập tên đội trong chat"
+      - "<yellow>⚠ Tính năng chỉ dành cho Admin"
+      action: 'view-enderchest'
+    reload-plugin:
+      slot: 14
+      material: REDSTONE
+      name: "<gradient:#E67E22:#C0392B>ʀᴇʟᴏᴀᴅ ᴘʟᴜɢɪɴ</gradient>"
+      lore:
+      - "<gray>Tải lại cấu hình của plugin"
+      - "<gray>Nhấp để tải lại cấu hình"
+      action: 'reload-plugin'
+    close:
+      slot: 22
+      material: BARRIER
+      name: "<red>ᴄʟᴏsᴇ</red>"
+      lore:
+      - "<gray>Đóng menu này"
+      action: 'close'

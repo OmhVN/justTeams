@@ -1,0 +1,45 @@
+﻿#──────────────────────────────── bank-gui.yml ─────────────────────────────────
+# GUI for the team bank
+#───────────────────────────────────────────────────────────────────────────────
+
+bank-gui:
+  title: "ᴛᴇᴀᴍ ʙᴀɴᴋ"
+  size: 27
+  items:
+    deposit:
+      slot: 11
+      material: LIME_STAINED_GLASS_PANE
+      name: "<green>ᴅᴇᴘᴏsɪᴛ</green>"
+      lore:
+      - "<gray>Nhấp để gửi tiền vào ngân hàng đội.</gray>"
+      - ""
+      - "<yellow>Bạn sẽ được yêu cầu nhập trong chat.</yellow>"
+      action: deposit
+    balance:
+      slot: 13
+      material: SUNFLOWER
+      name: "<gold>ᴄᴜʀʀᴇɴᴛ ʙᴀʟᴀɴᴄᴇ</gold>"
+      lore:
+      - "<gray>Số dư: <white><balance></white>"
+    withdraw:
+      slot: 15
+      material: RED_STAINED_GLASS_PANE
+      name: "<red>ᴡɪᴛʜᴅʀᴀᴡ</red>"
+      lore:
+      - "<gray>Nhấp để rút tiền từ ngân hàng đội.</gray>"
+      - ""
+      - "<yellow>Bạn sẽ được yêu cầu nhập trong chat.</yellow>"
+      action: withdraw
+    withdraw-locked:
+      slot: 15
+      material: GRAY_DYE
+      name: "<dark_gray>ᴡɪᴛʜᴅʀᴀᴡ <red>⨯ ʟᴏᴄᴋᴇᴅ</red></dark_gray>"
+      lore:
+      - "<gray>Bạn không có quyền rút tiền từ ngân hàng.</gray>"
+      - "<gray>Hãy yêu cầu chủ sở hữu đội cấp quyền cho bạn.</gray>"
+    back-button:
+      slot: 22
+      material: ARROW
+      name: "<gray>ʙᴀᴄᴋ</gray>"
+      lore:
+      - "<yellow>Nhấp để quay lại menu chính.</yellow>"

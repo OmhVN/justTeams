@@ -1,0 +1,26 @@
+﻿# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║  justTeams · gui.yml                                                     ║
+# ║                                                                          ║
+# ║  Customise every menu: layout, materials, names and lore. Names and      ║
+# ║  lore support MiniMessage. Use standard Bukkit material names.           ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+# This file allows you to customize every aspect of the plugin's GUIs.
+#
+# CUSTOMIZATION:
+# - Use standard Bukkit Material names (e.g., DIAMOND_SWORD, PLAYER_HEAD).
+# - A full list can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# - Names and lores support MiniMessage formatting for colors and effects.
+# - Placeholders like <player>, <balance>, <status_indicator> will be replaced where applicable.
+# - Add "enabled: false" to any item to hide it from the GUI completely.
+#
+# CUSTOM SLOT LAYOUTS FOR DYNAMIC ITEMS:
+# - Sections that hold dynamic/list items (player-head, warp-item, team-icon, ally-team, etc.)
+#   support a "slots:" list to precisely control where each entry is placed.
+# - Slot indices are 0-based, left-to-right, top-to-bottom:
+#     Row 1: 0-8     Row 2: 9-17    Row 3: 18-26    Row 4: 27-35    Row 5: 36-44    Row 6: 45-53
+# - Example: slots: [10, 11, 12, 13, 14, 15, 16] limits heads to the middle of row 2.
+# - Remove the slots: line entirely to use the default full range (slots 9-44).
+# - When more items exist than configured slots, extra items are truncated (not shown).
+# ---------------------------------------------------- #
+
+# GUI VERSION - DO NOT CHANGE THIS
