@@ -92,7 +92,7 @@ public class TeamGUIListener implements Listener {
             boolean isOurGui = isOurGui(holder);
             if (isOurGui) {
                this.transitioningPlayers.add(player.getUniqueId());
-               org.bukkit.Bukkit.getScheduler().runTask(this.plugin, () -> this.transitioningPlayers.remove(player.getUniqueId()));
+               this.plugin.getTaskRunner().runOnEntity(player, () -> this.transitioningPlayers.remove(player.getUniqueId()));
             }
 
             if (holder instanceof QuestGUI questGui) {
@@ -384,13 +384,8 @@ public class TeamGUIListener implements Listener {
                this.onAllyGUIClick(player, gui, pdc);
             }
          } catch (Exception e) {
-            Logger var10000 = this.plugin.getLogger();
-            String var10001 = player.getName();
-            var10000.severe("Error handling GUI click for " + var10001 + ": " + e.getMessage());
-            if (this.plugin.getConfigManager().isDebugEnabled()) {
-               this.plugin.getLogger().severe("Error in GUI action: " + e.getMessage());
-            }
-
+            this.plugin.getLogger().severe("Error handling GUI click for " + player.getName() + ": " + e.getMessage());
+            e.printStackTrace();
             this.plugin.getMessageManager().sendMessage(player, "gui_error");
             event.setCancelled(true);
          }
