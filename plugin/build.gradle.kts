@@ -48,9 +48,11 @@ tasks.build {
     dependsOn(tasks.shadowJar)
 }
 
+val projectVersion = project.version
+
 tasks.processResources {
     filteringCharset = "UTF-8"
     filesMatching("plugin.yml") {
-        expand("version" to project.version)
+        expand("version" to projectVersion)
     }
 }
