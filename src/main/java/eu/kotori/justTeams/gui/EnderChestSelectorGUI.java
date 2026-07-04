@@ -30,7 +30,7 @@ public class EnderChestSelectorGUI implements InventoryHolder {
         this.player = player;
         this.team = team;
         this.selectorPage = selectorPage;
-        this.inventory = Bukkit.createInventory(this, 54, Component.text("ᴛᴇᴀᴍ ᴇɴᴅᴇʀ ᴄʜᴇsᴛ (ᴘᴀɢᴇ " + selectorPage + ")"));
+        this.inventory = Bukkit.createInventory(this, 54, Component.text("ʀươɴɢ ĐỘɪ (ᴛʀᴀɴɢ " + selectorPage + ")"));
         this.initializeItems();
     }
 
@@ -48,12 +48,10 @@ public class EnderChestSelectorGUI implements InventoryHolder {
             
             if (chestPage <= unlockedCount) {
                 EnderChestPageMetadata meta = (chestPage - 1 < pagesMetadata.size()) ? pagesMetadata.get(chestPage - 1) : null;
-                String pageName = (meta != null && meta.name != null && !meta.name.isEmpty()) ? meta.name : "Trang " + chestPage;
                 String minRole = (meta != null) ? meta.minRole : "MEMBER";
                 boolean locked = (meta != null) && meta.locked;
                 
                 List<String> lore = new ArrayList<>();
-                lore.add("<gray>Tên hiển thị: <white>" + pageName + "</white></gray>");
                 lore.add("<gray>Quyền tối thiểu: <yellow>" + minRole + "</yellow></gray>");
                 lore.add("<gray>Trạng thái khóa: <yellow>" + (locked ? "Đang khóa" : "Mở khóa") + "</yellow></gray>");
                 lore.add("");
@@ -61,7 +59,7 @@ public class EnderChestSelectorGUI implements InventoryHolder {
                 lore.add("<aqua>▶ Nhấp chuột phải để chỉnh sửa.</aqua>");
                 
                 ItemStack chestItem = new ItemBuilder(Material.CHEST)
-                    .withName("<gradient:#4C9DDE:#4C96D2>ᴘᴀɢᴇ " + chestPage + "</gradient>")
+                    .withName("<gradient:#4C9DDE:#4C96D2>ᴋʜᴏ " + chestPage + "</gradient>")
                     .withLore(lore)
                     .withAction("open-page-" + chestPage)
                     .build();
@@ -72,7 +70,7 @@ public class EnderChestSelectorGUI implements InventoryHolder {
         
         if (selectorPage > 1) {
             ItemStack prevButton = new ItemBuilder(Material.ARROW)
-                .withName("<yellow>ᴘʀᴇᴠɪᴏᴜs ᴘᴀɢᴇ</yellow>")
+                .withName("<yellow>ᴛʀᴀɴɢ ᴛʀướᴄ</yellow>")
                 .withAction("selector-prev-page")
                 .build();
             this.inventory.setItem(45, prevButton);
@@ -87,7 +85,7 @@ public class EnderChestSelectorGUI implements InventoryHolder {
             lore.add("<yellow>Nhấp để mở khóa trang " + nextToUnlock + "!</yellow>");
             
             ItemStack buyItem = new ItemBuilder(Material.BUNDLE)
-                .withName("<gradient:#55FF55:#00AA00>ᴜᴘɢʀᴀᴅᴇ ᴄʜᴇsᴛ</gradient>")
+                .withName("<gradient:#55FF55:#00AA00>ɴÂɴɢ ᴄẤᴘ ᴋʜᴏ</gradient>")
                 .withLore(lore)
                 .withAction("buy-page-" + nextToUnlock)
                 .build();
@@ -97,7 +95,7 @@ public class EnderChestSelectorGUI implements InventoryHolder {
             lore.add("<gray>Bạn đã đạt giới hạn tối đa</gray>");
             lore.add("<gray>số lượng trang rương team (99 trang).</gray>");
             ItemStack maxItem = new ItemBuilder(Material.GRAY_DYE)
-                .withName("<red>ᴍᴀxɪᴍᴜᴍ ʟɪᴍɪᴛ</red>")
+                .withName("<red>ĐÃ ĐẠᴛ ɢɪỚɪ ʜẠɴ</red>")
                 .withLore(lore)
                 .build();
             this.inventory.setItem(49, maxItem);
@@ -106,7 +104,7 @@ public class EnderChestSelectorGUI implements InventoryHolder {
         int maxPagesToShow = Math.min(99, unlockedCount + 1);
         if (maxPagesToShow > selectorPage * 45) {
             ItemStack nextButton = new ItemBuilder(Material.ARROW)
-                .withName("<yellow>ɴᴇxᴛ ᴘᴀɢᴇ</yellow>")
+                .withName("<yellow>ᴛʀᴀɴɢ sᴀᴜ</yellow>")
                 .withAction("selector-next-page")
                 .build();
             this.inventory.setItem(53, nextButton);
