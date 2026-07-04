@@ -52,6 +52,7 @@ public class TeamGUIListener implements Listener {
    private final NamespacedKey actionKey;
    private final ConcurrentHashMap<String, Long> actionCooldowns = new ConcurrentHashMap();
    private final Object actionLock = new Object();
+   private final java.util.Set<UUID> transitioningPlayers = java.util.concurrent.ConcurrentHashMap.newKeySet();
 
    public TeamGUIListener(JustTeams plugin) {
       this.plugin = plugin;
@@ -89,6 +90,11 @@ public class TeamGUIListener implements Listener {
          try {
             InventoryHolder holder = event.getView().getTopInventory().getHolder();
             boolean isOurGui = isOurGui(holder);
+            if (isOurGui) {
+               this.transitioningPlayers.add(player.getUniqueId());
+               org.bukkit.Bukkit.getScheduler().runTask(this.plugin, () -> this.transitioningPlayers.remove(player.getUniqueId()));
+            }
+
             if (holder instanceof QuestGUI questGui) {
                questGui.handleClick(event);
                return;
@@ -1914,5 +1920,66 @@ public class TeamGUIListener implements Listener {
                 this.plugin.getTaskRunner().runOnEntity(player, gui::open);
             }
         });
+    }
+
+    @EventHandler
+    public void onInventoryClose(org.bukkit.event.inventory.InventoryCloseEvent event) {
+       if (!(event.getPlayer() instanceof Player)) {
+          return;
+       }
+       Player player = (Player) event.getPlayer();
+       InventoryHolder holder = event.getView().getTopInventory().getHolder();
+       if (holder == null) {
+          return;
+       }
+
+       if (holder instanceof ConfirmGUI) {
+          ((ConfirmGUI) holder).handleClose();
+       }
+
+       if (!isOurGui(holder)) {
+          return;
+       }
+
+       if (this.transitioningPlayers.contains(player.getUniqueId())) {
+          this.transitioningPlayers.remove(player.getUniqueId());
+          return;
+       }
+
+       Team team = this.teamManager.getPlayerTeam(player.getUniqueId());
+       if (team == null) {
+          return;
+       }
+
+       if (holder instanceof BankGUI ||
+           holder instanceof WarpsGUI ||
+           holder instanceof UpgradesGUI ||
+           holder instanceof BlacklistGUI ||
+           holder instanceof InvitesGUI ||
+           holder instanceof JoinRequestGUI ||
+           holder instanceof TeamSettingsGUI ||
+           holder instanceof AllyGUI ||
+           holder instanceof EnderChestSelectorGUI ||
+           holder instanceof LeaderboardCategoryGUI ||
+           holder instanceof MemberEditGUI) {
+          
+          this.plugin.getTaskRunner().runOnEntity(player, () -> {
+             if (player.isOnline()) {
+                new TeamGUI(this.plugin, team, player).open();
+              }
+           });
+       } else if (holder instanceof LeaderboardViewGUI) {
+           this.plugin.getTaskRunner().runOnEntity(player, () -> {
+              if (player.isOnline()) {
+                 new LeaderboardCategoryGUI(this.plugin, player).open();
+              }
+           });
+       } else if (holder instanceof EnderChestPageEditGUI) {
+           this.plugin.getTaskRunner().runOnEntity(player, () -> {
+              if (player.isOnline()) {
+                 new EnderChestSelectorGUI(this.plugin, player, team).open();
+              }
+           });
+       }
     }
 }

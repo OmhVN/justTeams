@@ -64,18 +64,33 @@ public class ConfirmGUI implements InventoryHolder {
       }
    }
 
+   private boolean callbackRun = false;
+
    public void open() {
       this.viewer.openInventory(this.inventory);
    }
 
    public void handleConfirm() {
-      this.viewer.closeInventory();
-      this.callback.accept(true);
+      if (!this.callbackRun) {
+         this.callbackRun = true;
+         this.viewer.closeInventory();
+         this.callback.accept(true);
+      }
    }
 
    public void handleCancel() {
-      this.viewer.closeInventory();
-      this.callback.accept(false);
+      if (!this.callbackRun) {
+         this.callbackRun = true;
+         this.viewer.closeInventory();
+         this.callback.accept(false);
+      }
+   }
+
+   public void handleClose() {
+      if (!this.callbackRun) {
+         this.callbackRun = true;
+         this.callback.accept(false);
+      }
    }
 
    public Inventory getInventory() {
